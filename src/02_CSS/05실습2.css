@@ -1,0 +1,13 @@
+.mainmenu {
+  display: flex;
+  width: 100vw;
+  justify-content: center;
+}
+
+.mainmenu > div {
+  border: 1px solid;
+  width: 15vw;
+}
+
+.matching {
+}

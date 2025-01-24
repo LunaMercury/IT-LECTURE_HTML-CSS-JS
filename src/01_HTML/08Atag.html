@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>08Atag</title>
+    <style>
+      a {
+        text-decoration: none;
+        color: black;
+      }
+      .btn {
+        /* 태그 전환 */
+        display: block;
+        /* 가로,세로 */
+        min-width: 80px;
+        max-width: 150px;
+        height: 35px;
+        /* 글씨체 */
+        font-size: 20px;
+        font-weight: 600;
+        color: white;
+        /* 경계선 */
+        border: 0.5px solid;
+        border-radius: 12px;
+        box-shadow: 3px 3px 3px lightgray;
+        /* 배치 */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        /* 여백 */
+        margin: 10px;
+        transition: font-size 1s ease-in-out;
+      }
+      .btn-primary {
+        background-color: royalblue;
+      }
+      .btn-secondery {
+        background-color: orange;
+      }
+      .btn:hover {
+        opacity: 0.8;
+        font-size: 1.6rem;
+        /* transition: 1s ease-in-out; */
+      }
+      iframe {
+        border: 2px solid;
+      }
+    </style>
+  </head>
+  <body>
+    <a href="./02BASIC.html" class="btn btn-primary">TEST1</a>
+    <a href="./02BASIC.html" class="btn btn-secondery">TEST2</a>
+    <a href="https://www.naver.com">네이버</a> <br />
+    <a href="https://www.naver.com" target="_blank">네이버_새탭열기</a><br />
+    <div>
+      <a href="./02BASIC.html" target="frm1">02BASIC</a><br />
+      <a href="https://daum.net" target="frm1">Daum.net</a>
+    </div>
+    <iframe
+      name="frm1"
+      src=""
+      frameborder="0"
+      width="400px"
+      height="400px"
+    ></iframe>
+  </body>
+</html>

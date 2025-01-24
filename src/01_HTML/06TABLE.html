@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="/src/02_CSS/06TABLE.css" />
+  </head>
+  <body>
+    <table border="1" width="400px" height="300px">
+      <tr>
+        <td>열이름1</td>
+        <td>열이름2</td>
+        <td>열이름3</td>
+      </tr>
+      <tr>
+        <td>값1</td>
+        <td>값2</td>
+        <td>값3</td>
+      </tr>
+      <tr>
+        <td>값4</td>
+        <td>값5</td>
+        <td>값6</td>
+      </tr>
+    </table>
+    <hr />
+    <!-- rowspan : 행병합 -->
+
+    <table class="tbl_rowspan">
+      <caption>
+        행병합
+      </caption>
+      <tr>
+        <td rowspan="3">1</td>
+        <td>2</td>
+        <td>3</td>
+        <td>4</td>
+      </tr>
+      <tr>
+        <!-- <td>5</td> -->
+        <td>6</td>
+        <td>7</td>
+        <td>8</td>
+      </tr>
+      <tr>
+        <!-- <td>9</td> -->
+        <td>10</td>
+        <td>11</td>
+        <td>12</td>
+      </tr>
+      <tr>
+        <td>13</td>
+        <td>14</td>
+        <td>15</td>
+        <td>16</td>
+      </tr>
+    </table>
+    <br />
+
+    <!-- colspan : 열병합 -->
+    <table class="tbl_colspan">
+      <caption>
+        열병합
+      </caption>
+      <tr>
+        <td>1</td>
+        <td>2</td>
+        <td>3</td>
+        <td>4</td>
+      </tr>
+      <tr>
+        <td>5</td>
+        <td>6</td>
+        <td>7</td>
+        <td>8</td>
+      </tr>
+      <tr>
+        <td>9</td>
+        <td>10</td>
+        <td>11</td>
+        <td>12</td>
+      </tr>
+      <tr>
+        <td>13</td>
+        <td colspan="3">14</td>
+        <!-- <td>15</td>
+        <td>16</td> -->
+      </tr>
+    </table>
+  </body>
+</html>

@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>05Emmet</title>
+  </head>
+  <body>
+    <!-- 자식요소 선택 : `>` -->
+
+    <!-- div>ul>li -->
+    <div>
+      <ul>
+        <li></li>
+      </ul>
+    </div>
+
+    <!-- div>p>ul>li   p 태그가 뭔가 좀 이상해서 수정함-->
+    <div>
+      <p></p>
+      <ul>
+        <li></li>
+      </ul>
+    </div>
+
+    <!-- 형제 노드 : + -->
+    <!-- div>ul*3+ol*2 -->
+    <div>
+      <ul></ul>
+      <ul></ul>
+      <ul></ul>
+      <ol></ol>
+      <ol></ol>
+    </div>
+    <!-- div>ui>li>a+ul -->
+    <div>
+      <ui>
+        <li>
+          <a href=""></a>
+          <ul></ul>
+        </li>
+      </ui>
+    </div>
+
+    <!-- 상위 태그로 이동 : `^` -->
+    <!-- div>ul>li^p -->
+    <div>
+      <ul>
+        <li></li>
+      </ul>
+      <p></p>
+    </div>
+
+    <!-- 메뉴구조 -->
+    <!-- div>ul>li>a*2{mainmenu $}>ul>li*4{submenu$} -->
+    <div>
+      <ul>
+        <li>
+          <a href=""
+            >mainmenu 1
+            <ul>
+              <li>submenu1</li>
+              <li>submenu2</li>
+              <li>submenu3</li>
+              <li>submenu4</li>
+            </ul>
+          </a>
+          <a href=""
+            >mainmenu 2
+            <ul>
+              <li>submenu1</li>
+              <li>submenu2</li>
+              <li>submenu3</li>
+              <li>submenu4</li>
+            </ul>
+          </a>
+        </li>
+      </ul>
+    </div>
+
+    <!-- 클래스 선택자 : `.`-->
+    <div class="c1"></div>
+
+    <!-- ID 선택자 : `#` -->
+    <div id="wrapper"></div>
+
+    <!-- attr(속성) 추가 : `[]`-->
+    <!-- div>ol[type='I' data-name='비타']>li*4{MENU_$} = 사이에는 띄어쓰기 없게, 속성 간에는 띄어쓰기 가능 -->
+    <div>
+      <ol type="I" data-name="비타">
+        <li>MENU_1</li>
+        <li>MENU_2</li>
+        <li>MENU_3</li>
+        <li>MENU_4</li>
+      </ol>
+    </div>
+    <!-- 시작번호 선택 -->
+    <!-- div>ul>li*8{text $@5}  이건 왜 띄어쓰기 가능한지 모르겠음 -->
+    <div>
+      <ul>
+        <li>text 5</li>
+        <li>text 6</li>
+        <li>text 7</li>
+        <li>text 8</li>
+        <li>text 9</li>
+        <li>text 10</li>
+        <li>text 11</li>
+        <li>text 12</li>
+      </ul>
+    </div>
+
+    <!-- 문서 전체 구조 -->
+    <!-- .wrapper>header>.top-header+nav^main>section*3^footer -->
+    <div class="wrapper">
+      <header>
+        <div class="top-header"></div>
+        <nav>
+          <!-- ul.main-menu>li*4>a{$_mainmenu}+ul>li*5>a{$_submenu} -->
+        </nav>
+      </header>
+      <main>
+        <section></section>
+        <section></section>
+        <section></section>
+      </main>
+      <footer></footer>
+    </div>
+  </body>
+</html>

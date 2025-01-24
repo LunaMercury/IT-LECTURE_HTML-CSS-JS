@@ -1,0 +1,16 @@
+body {
+  background-color: rgb(247, 157, 106);
+}
+body > ul {
+  display: flex;
+}
+.title {
+  display: flex;
+  flex-direction: column;
+  outline: solid 1px;
+  width: 30vw;
+  height: 100%;
+}
+.title > ol {
+  display: block;
+}
