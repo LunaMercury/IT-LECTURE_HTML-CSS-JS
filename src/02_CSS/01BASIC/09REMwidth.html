@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>09REMwidth</title>
+    <style>
+      :root {
+        font-size: 24px;
+      }
+      div {
+        text-align: center;
+        margin: 20px;
+        padding: 20px;
+        border: 1px solid;
+      }
+      .block1 {
+        /* px */
+        width: 250px;
+        height: 250px;
+        font-size: 16px;
+        line-height: 250px;
+      }
+      .block2 {
+        /* px to rem 참고 */
+        width: 15.625rem;
+        height: 15.625rem;
+        font-size: 1rem;
+        line-height: 15.625rem;
+      }
+      .block3 {
+        /* vw,vh */
+        width: clamp(15.625rem, 50vw, 50rem);
+        height: 25vh;
+        font-size: clamp(1.5rem, 5vw, 5rem);
+        line-height: 25vh;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="block1">px</div>
+    <hr />
+    <div class="block2">rem</div>
+    <hr />
+    <div class="block3">vw, vh</div>
+  </body>
+</html>

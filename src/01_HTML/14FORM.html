@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="14Form.css" />
+  </head>
+  <body>
+    <form action="/test.jsp" method="get">
+      <div class="header"></div>
+      <div class="row">
+        <h4>회원가입</h4>
+      </div>
+      <div class="row">
+        <hr />
+      </div>
+      <div class="row">
+        <label for="user_id">아이디</label>
+        <input type="text" name="user_id" />
+        <a href="javascript::void(0)">중복확인</a>
+      </div>
+      <div class="row">
+        <label for="user_password">비밀번호</label>
+        <input type="password" name="user_password" />
+      </div>
+
+      <div class="row">
+        <label for=""></label>
+        <input
+          type="password"
+          name="re-password"
+          placeholder="비밀번호 재확인"
+        />
+      </div>
+      <div class="row">
+        <label for="">이름</label>
+        <input type="text" name="user_name" />
+      </div>
+      <div class="row">
+        <label for="">주소</label>
+        <input type="number" name="user_zipcode" /><span>-</span>
+        <input type="number" /> <a href="javascript:void(0)">우편번호</a>
+      </div>
+      <div class="row">
+        <label for="">휴대전화</label>
+        <select name="user_phonenumber1" id="">
+          <option value="">010</option>
+          <option value="">011</option>
+        </select>
+        <input type="number" />
+        <input type="number" />
+      </div>
+      <div class="row">
+        <label for="">전화번호</label>
+        <select name="user_phonenumber2" id="">
+          <option value="">02</option>
+          <option value="">053</option>
+        </select>
+        <input type="number" />
+        <input type="number" />
+      </div>
+      <div class="row">
+        <label for="">이메일</label>
+        <input type="text" name="user_email" id="" />
+        <select name="" id="">
+          <option value="">@naver.com</option>
+          <option value="">@google.com</option>
+        </select>
+      </div>
+      <div class="row">
+        <label for="">생년월일</label>
+        <input type="radio" name="cal" value="1" />양
+        <input type="radio" name="cal" value="0" />음
+        <div>
+          <select name="" id="">
+            <option value="">2025</option>
+            <option value="">2024</option>
+          </select>
+          <select name="" id="">
+            <option value="">01</option>
+            <option value="">02</option>
+          </select>
+        </div>
+      </div>
+      <div class="border"><hr /></div>
+      <div class="row">
+        <input type="checkbox" name="email-receive" />
+        <label for="">광고 이메일을 수신합니다.</label>
+      </div>
+      <div class="row">
+        <input type="checkbox" name="sns-receive" />
+        <label for="">SNS를 수신합니다.</label>
+      </div>
+      <div class="row">
+        <input type="submit" value="가입취소" />
+        <button>회원가입</button>
+      </div>
+    </form>
+  </body>
+</html>

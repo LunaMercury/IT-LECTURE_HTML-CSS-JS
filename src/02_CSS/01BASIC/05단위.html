@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>05단위</title>
+    <style>
+      body {
+        margin: 0;
+      }
+      div {
+        height: 100px;
+        margin-bottom: 10px;
+        background-color: orange;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- px : 고정크기 지정 -->
+    <div style="width: 700px"></div>
+    <div style="width: 700px">
+      <p style="width: 900px; height: 50px; background-color: royalblue"></p>
+    </div>
+
+    <!-- % : 가변크기. 상위태그를 기준으로 %만큼의 크기 지정 -->
+    <div style="width: 50%">
+      <p style="width: 50%; height: 50px; background-color: royalblue"></p>
+    </div>
+
+    <!-- vw,vh : 가변 크기. 뷰포트를 기준으로 백분률만큼 크기 지정 -->
+    <div style="width: 50%">
+      <p style="width: 75vw; height: 50px; background-color: royalblue"></p>
+    </div>
+
+    <!-- em,rem -->
+    <div style="height: ">test</div>
+  </body>
+</html>

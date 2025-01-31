@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>02StylePriority</title>
+
+    <style>
+      h1 {
+        background-color: orange;
+        color: white;
+      }
+    </style>
+    <link rel="stylesheet" href="./css/common.css" />
+  </head>
+  <body>
+    <!-- 
+    문서 내 style태그
+    외부 css 생성 이후 link 설정(권장)
+    inline style(권장되지 않음)
+    !import(권장되지 않음)
+    -->
+
+    <h1 style="background-color: red; color: wheat">Hello World</h1>
+  </body>
+</html>

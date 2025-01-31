@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <style>
+      /* common 설정 */
+      * {
+        font-size: 0.9rem;
+        box-sizing: border-box;
+      }
+      a {
+        text-decoration: none;
+        color: black;
+        border: 1px solid gray;
+        display: block;
+        height: 100%;
+        line-height: 35px;
+        text-align: center;
+        width: 100%;
+        max-width: 80px;
+        font-size: 0.8rem;
+      }
+      body {
+        margin: 0;
+        padding: 0;
+      }
+      form {
+        width: 380px;
+        border: 1px solid gray;
+        margin: 50px auto;
+        /* padding : 10px; */
+      }
+      form > .row {
+        margin: 10px;
+        display: flex;
+        justify-content: left;
+        align-items: center;
+        gap: 5px;
+        height: 35px;
+      }
+      form > .row > label {
+        display: block;
+        min-width: 85px;
+        /* border : 1px solid; */
+        height: 100%;
+        line-height: 35px;
+      }
+
+      form > .row > input[type="text"],
+      form > .row > input[type="password"],
+      form > .row > select {
+        width: 100%;
+        height: 100%;
+        outline: none;
+        border-radius: 0;
+        border: 1px solid gray;
+        padding: 0 3px;
+      }
+
+      form > .row.header {
+        height: 15px;
+        border: 1px solid;
+        margin: 0;
+        background-color: black;
+      }
+      form > .row.title {
+        justify-content: center;
+      }
+      form > .row.title > h4 {
+        font-size: 1.5rem;
+      }
+      form > .row.line {
+        border: 0;
+        height: 1px;
+        background-color: gray;
+        margin: 10px 0;
+        margin-bottom: 25px;
+      }
+      form > .row.agreement {
+        height: 15px;
+      }
+      form > .row.agreement > label {
+        height: 100%;
+        line-height: 12px;
+      }
+      form > .row.btn-group {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      form > .row.btn-group > button,
+      form > .row.btn-group > input[type="submit"] {
+        width: 100%;
+        height: 100%;
+        border-radius: 0;
+        border: 1px solid gray;
+        outline: none;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <form action="/test.jsp" method="get">
+      <div class="row header">
+        <!-- 헤더(검정색 ) -->
+      </div>
+      <div class="row title">
+        <!-- title -->
+        <h4>회원가입</h4>
+      </div>
+      <div class="row line"></div>
+      <div class="row">
+        <label for="">아이디</label>
+        <input type="text" name="userid" />
+        <a href="javascript:void(0)">중복확인</a>
+      </div>
+      <div class="row">
+        <label for="">비밀번호</label>
+        <input
+          type="password"
+          pattern="^(?=.*[a-zA-Z])(?=.*[0-9]).{8,25}$"
+          name="password"
+          oninvalid="this.setCustomValidity('8자 이상 25자 이하 영문소문자 혹은 대문자, 숫자를 1개이상 포함 필요')"
+        />
+      </div>
+      <div class="row">
+        <label for=""></label>
+        <input
+          type="password"
+          name="re-password"
+          placeholder="비밀번호 재확인"
+        />
+      </div>
+      <div class="row">
+        <label for="">이름</label>
+        <input type="text" name="username" />
+      </div>
+      <div class="row">
+        <label for="">주소</label>
+        <input type="text" name="zipcode" />
+        <a href="javascript:void(0)">우편번호</a>
+      </div>
+      <div class="row">
+        <label for=""></label>
+        <input type="text" name="addr1" />
+      </div>
+      <div class="row">
+        <label for=""></label>
+        <input type="text" name="addr2" />
+      </div>
+      <div class="row">
+        <label for="">휴대전화</label>
+        <select name="phone1">
+          <option value="010">010</option>
+          <option value="011">011</option>
+        </select>
+        <input type="text" />
+        <input type="text" />
+      </div>
+      <div class="row">
+        <label for="">전화번호</label>
+        <select name="phone2">
+          <option value="">053</option>
+        </select>
+        <input type="text" pattern="[0-9]{3,4}" />
+        <input type="text" pattern="[0-9]{3,4}" />
+      </div>
+      <div class="row">
+        <label for="">이메일</label>
+        <input type="text" name="email" />
+        <select>
+          <option value="">@naver.com</option>
+          <option value="">@daum.net</option>
+        </select>
+      </div>
+      <div class="row">
+        <label for="">생년월일</label>
+        <input type="radio" name="cal" value="1" /> 양
+        <input type="radio" name="cal" value="0" /> 음
+      </div>
+      <div class="row">
+        <select>
+          <option value="">2025</option>
+        </select>
+        <select>
+          <option value="">09</option>
+        </select>
+        <select>
+          <option value="">30</option>
+        </select>
+      </div>
+      <hr />
+      <div class="row agreement">
+        <input type="checkbox" name="email-recv" />
+        <label for="">00의 이메일을 수신합니다.</label>
+      </div>
+      <div class="row agreement">
+        <input type="checkbox" name="sns-recv" />
+        <label for="">00의 SMS를 수신합니다.</label>
+      </div>
+      <div class="row btn-group">
+        <input type="submit" value="가입 취소" />
+        <button>회원 가입</button>
+      </div>
+    </form>
+  </body>
+</html>

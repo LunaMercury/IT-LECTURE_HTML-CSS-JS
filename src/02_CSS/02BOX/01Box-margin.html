@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body {
+        margin: 0;
+      }
+      div {
+        width: 300px;
+        height: 300px;
+        background-color: orange;
+      }
+      .d1 {
+        /* margin : 전체 */
+        /* margin : 상하 좌우 */
+        /* margin : 상 좌우 하 */
+        /* margin : 상 우 하 좌 */
+        margin: 20px 40px 10px 30px;
+      }
+      .d2 {
+        margin: 0 auto;
+      }
+      .parent {
+        width: 80vw;
+        height: 250px;
+        margin: 20px auto;
+      }
+      .son {
+        background-color: royalblue;
+        width: 150px;
+        height: 150px;
+      }
+      /* position + margin 이용하여 중앙배치 */
+      .parent1 {
+        position: relative;
+      }
+      .son1 {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        margin: auto;
+      }
+      /* display flex 이용하여 중앙배치 */
+      .parent2 {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="d1">D1</div>
+    <div class="d2">D2</div>
+    <div class="parent parent1">
+      <div class="son son1"></div>
+    </div>
+    <div class="parent parent2">
+      <div class="son son2"></div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>10FontFamily</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Diplomata&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      .block1 {
+        font-family: "Diplomata", serif;
+        font-weight: 100;
+        font-style: normal;
+      }
+      /* 글꼴 등록 */
+      @font-face {
+        font-family: Dongle-Bold;
+        src: url(./fonts/Dongle-Bold.ttf);
+        font-weight: 400;
+        font-style: normal;
+      }
+      @font-face {
+        font-family: 나눔손글씨_여름글씨;
+        src: url(./fonts/나눔손글씨_여름글씨.ttf);
+      }
+      @font-face {
+        font-family: "DungGeunMo";
+        src: url("https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/DungGeunMo.woff")
+          format("woff");
+        font-weight: normal;
+        font-style: normal;
+      }
+      @font-face {
+        font-family: 양진체v0.93;
+        src: url(./fonts/양진체v0.93.otf);
+        font-weight: normal;
+        font-style: normal;
+      }
+    </style>
+  </head>
+  <body style="font-family: 양진체v0.93">
+    <span>글꼴</span>
+    <div style="font-family: 'Times New Roman', Times, serif">
+      'Times New Roman', Times, serif
+    </div>
+    <div
+      style="
+        font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+      "
+    >
+      Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif
+    </div>
+    <hr />
+    <span>외부글꼴</span>
+    <div class="block1">Diplomata, link방식으로 적용</div>
+    <div style="font-family: Dongle-Bold; font-size: 2rem">
+      Dongle, 다운로드 방식으로 적용. 저장해도 자동완성 안됨
+    </div>
+    <div
+      style="
+        font-family: 나눔손글씨_여름글씨;
+        font-weight: 400;
+        font-size: 2rem;
+      "
+    >
+      나눔손글씨_여름글씨
+    </div>
+    <!-- 폰트 추천 사이트 : 프리텐다드 -->
+    <div style="font-family: DungGeunMo">Fixedsys 둥근모꼴+</div>
+  </body>
+</html>

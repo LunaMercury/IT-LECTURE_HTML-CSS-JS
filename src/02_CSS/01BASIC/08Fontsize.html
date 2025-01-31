@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>08Fontsize</title>
+    <style>
+      :root {
+        font-size: 14px;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- px : 고정크기(기본 16px) -->
+    <hr />
+    <div style="font-size: 64px">
+      <div style="font-size: 32px">32px 고정</div>
+      <div style="font-size: 16px">16px 고정</div>
+    </div>
+
+    <!-- em : 상대크기(부모태그의 font-size를 기준) -->
+    <hr />
+    <div style="font-size: 24px">
+      <div>부모 태그는 24px</div>
+      <div style="font-size: 2em">2em, 부모가24px니까 48px</div>
+    </div>
+
+    <!-- rem : 상대크기(기본글자크기(:root : 16px을 기준)) -->
+    <hr />
+    <div style="font-size: 2rem">
+      <div>:root { font-size: 14px; }</div>
+      <div>여기는 부모 태그가 2rem이다. root태그 16px X 2 = 32px이다</div>
+      <div style="font-size: 1rem">
+        하지만 rem은 root태그 기준이므로 1rem을 입력하면 16px이 된다
+      </div>
+    </div>
+
+    <!-- & : 상대크기(상위태그를 기준) -->
+    <hr />
+    <div style="font-size: 34px">
+      <div>font-size: 34px</div>
+      <div style="font-size: 200%">200%</div>
+    </div>
+
+    <!-- vw : 상대 크기(뷰포트를 기준으로) -->
+    <hr />
+    <div style="width: 90vw; height: 200px; border: 1px solid; margin: 0 auto">
+      <div
+        style="
+          text-align: center;
+          line-height: 200px;
+          font-size: clamp(3rem, 5vw, 6rem);
+          /* clamp(min,normal,max) */
+        "
+      >
+        HELLO WORLD
+      </div>
+    </div>
+  </body>
+</html>

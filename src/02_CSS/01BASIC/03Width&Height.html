@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>03Width&Height</title>
+    <style>
+      * {
+        margin: 0px;
+      }
+      .parent {
+        height: 300px;
+        width: 100%;
+        max-width: 1280px;
+        min-width: 30px;
+        background-color: royalblue;
+      }
+      .son {
+        /* height: 150px; */
+        height: 100%;
+        width: 150px;
+        background-color: orange;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- 
+    width : auto(기본값, 최대너비를 가지려는 성질)
+    max-width : 최대너비
+    min-width : 최소너비
+    max-height : 최대높이
+    min-height : 최소높이
+    hight : auto(기본값, 최소높이를 가지려는 성질)
+     -->
+    <div class="parent">
+      <div class="son"></div>
+    </div>
+  </body>
+</html>
