@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>08TopHeader-after</title>
+    <style>
+      /* 전체 선택자 */
+      * {
+        box-sizing: border-box;
+      }
+      /* 요소 선택자 */
+      a {
+        text-decoration: none;
+        color: black;
+      }
+      ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        margin: 0;
+        font-family: sans-serif;
+      }
+      /* 자식 선택자 */
+      .wrapper {
+        max-width: 1280px;
+        height: 100vh;
+        border: 1px solid;
+        margin: 0 auto;
+      }
+      .wrapper > header > .top-header {
+        height: 25px;
+      }
+      .wrapper > header > .top-header > ul {
+        display: flex;
+        justify-content: right;
+        align-items: center;
+        height: 25px;
+      }
+      .wrapper > header > .top-header > ul > li {
+        padding: 0 20px;
+        position: relative;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .wrapper > header > .top-header > ul > li::after {
+        content: "|";
+        position: absolute;
+        left: 100%;
+        top: 0;
+        bottom: 0;
+        margin: auto;
+        width: 1px;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-self: center;
+        color: red;
+      }
+      .wrapper > header > .top-header > ul > li:last-child {
+        padding-right: auto;
+        margin-right: 5px;
+      }
+      .wrapper > header > .top-header > ul > li:last-child::after {
+        display: none;
+      }
+      .wrapper > header > .top-header > ul > li > a {
+        font-size: 0.8rem;
+        display: block;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <div class="top-header">
+          <ul>
+            <li><a href="javascript:void(0)">로그인</a></li>
+            <li><a href="javascript:void(0)">회원가입</a></li>
+            <li><a href="javascript:void(0)">장바구니</a></li>
+            <li><a href="javascript:void(0)">마이옥션</a></li>
+            <li><a href="javascript:void(0)">고객센터</a></li>
+            <li><a href="javascript:void(0)">판매하기</a></li>
+          </ul>
+        </div>
+        <nav></nav>
+      </header>
+      <main>
+        <section></section>
+      </main>
+      <footer></footer>
+    </div>
+  </body>
+</html>

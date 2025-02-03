@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>03Selector_layout</title>
+    <style>
+      /* 전체 선택자 */
+      * {
+        box-sizing: border-box;
+      }
+      /* 요소 선택자 */
+      a {
+        text-decoration: none;
+        color: black;
+      }
+      ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        margin: 0;
+        font-family: sans-serif;
+      }
+      /* 자식 선택자 */
+      .wrapper {
+      }
+      .wrapper > header {
+      }
+      .wrapper > header > .top-header {
+      }
+      .wrapper > header > nav {
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrapper">
+      wrapper
+      <div class="header">
+        header
+        <div class="top-header">top-header</div>
+        <nav>nav</nav>
+      </div>
+      <main>
+        <section>section</section>
+        <section>section</section>
+        <section>section</section>
+      </main>
+      <footer>footer</footer>
+    </div>
+  </body>
+</html>

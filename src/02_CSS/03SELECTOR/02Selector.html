@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>02Selector</title>
+    <style>
+      /* 자식선택자 : > */
+      .parent > div {
+        border: 1px solid red;
+        margin: 10px;
+      }
+      .parent > p {
+        background-color: orange;
+      }
+      .parent > .child {
+        background-color: green;
+      }
+      /* 자손선택자 : 공백*/
+      .parent p {
+        font-size: 2rem;
+      }
+      .parent div {
+        color: blue;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="parent">
+      <div class="child">
+        <div>1 SON - div</div>
+        <div>2 SON - div</div>
+        <div>3 SON - div</div>
+        <p>4 SON - p</p>
+      </div>
+      <div>5 Child - div</div>
+      <p>6 child - p</p>
+    </div>
+  </body>
+</html>
