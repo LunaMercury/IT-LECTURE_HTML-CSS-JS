@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>09NthChild</title>
+    <style>
+      /* 
+            :first-child - 첫 번째 자식요소
+            :last-child - 마지막 자식요소
+            :nth-child(n) - n번재 자식요소
+        */
+      ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+      }
+      ul > li {
+        width: 200px;
+        height: 25px;
+        border: 1px solid;
+        margin: 10px;
+      }
+      ul > li:first-child {
+        background-color: orange;
+      }
+      ul > li:last-child {
+        background-color: royalblue;
+      }
+      ul > li:nth-child(1) {
+        border-radius: 15px;
+      }
+      ul > li:nth-child(3) {
+        background-color: red;
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <ul>
+        <li><a href="">TEST_1</a></li>
+        <li><a href="">TEST_2</a></li>
+        <li><a href="">TEST_3</a></li>
+        <li><a href="">TEST_4</a></li>
+      </ul>
+    </div>
+  </body>
+</html>

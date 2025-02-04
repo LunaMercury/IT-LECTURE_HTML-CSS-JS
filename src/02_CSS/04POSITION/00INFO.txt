@@ -1,0 +1,8 @@
+position : box의 위치를 지정할 때 사용하는 속성
+    static(Default) : box요소가 문서 흐름에 따라 배치(순차적)
+    relative : box요소가 문서 흐름에 따라 배치(순차적), 상위 box 요소를 기준으로 위치 지정 가능
+    absolute : 상위 box 요소를 기준으로 위치 지정 가능,
+                상위 box요소가 position으로 설정되어있어야 기준으로 지정됨
+                상위 box요소가 position으로 설정되어 있지 않다면 Viewpoint를 기준으로 위치 조정 가능
+    fixed : Viewpoint를 기준으로 위치조정 가능, Scroll Event와 무관하게 고정위치 선점
+    stickey : 스크롤 영역을 기준으로 배치, 스크롤 위치를 따라가다가 일정위치를 넘어서면 고정

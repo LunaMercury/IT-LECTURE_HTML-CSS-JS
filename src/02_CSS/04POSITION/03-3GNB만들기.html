@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>03GNB만들기</title>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+      a {
+        text-decoration: none;
+        color: black;
+      }
+      ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        margin: 0;
+      }
+      /* layout */
+      .wrapper {
+      }
+      /* header */
+      .wrapper > header {
+      }
+      .wrapper > header > .top-header {
+      }
+      .wrapper > header > nav {
+        height: 80px;
+      }
+
+      .wrapper > header > nav > ul.main-menu {
+        width: 200px;
+        height: 100%;
+        border: 1px solid red;
+        position: relative;
+      }
+      .wrapper > header > nav > ul.main-menu > li {
+        background-color: lightgreen;
+        height: 100%;
+        width: 100%;
+        line-height: 80px;
+        text-align: center;
+      }
+      .wrapper > header > nav > ul.main-menu > li > ul.sub-menu {
+        display: none;
+        position: absolute;
+        width: 100%;
+        left: 200px;
+        top: 0;
+        background-color: aqua;
+      }
+      .wrapper > header > nav > ul.main-menu > li > ul.sub-menu > li {
+        border: 1px solid;
+      }
+      .wrapper > header > nav > ul.main-menu > li > ul.sub-menu > li > a {
+        display: block;
+      }
+      .wrapper > header > nav > ul.main-menu > li > a {
+        border: 1px solid blue;
+        display: block;
+      }
+
+      /* event */
+      .wrapper > header > nav > ul.main-menu > li:hover > ul.sub-menu {
+        display: block;
+      }
+      /* main */
+      .wrapper > main {
+      }
+      .wrapper > main > section {
+      }
+      /* footer */
+      .wrapper > footer {
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <div class="top-header"></div>
+        <nav>
+          <ul class="main-menu">
+            <li>
+              <a href="javascript:void(0)">1_mainmenu</a>
+              <ul class="sub-menu">
+                <li><a href="javascript:void(0)">1_submenu</a></li>
+                <li><a href="javascript:void(0)">2_submenu</a></li>
+                <li><a href="javascript:void(0)">3_submenu</a></li>
+                <li><a href="javascript:void(0)">4_submenu</a></li>
+                <li><a href="javascript:void(0)">5_submenu</a></li>
+              </ul>
+            </li>
+            <li>
+              <a href="javascript:void(0)">2_mainmenu</a>
+              <ul class="sub-menu">
+                <li><a href="javascript:void(0)">1_submenu</a></li>
+                <li><a href="javascript:void(0)">2_submenu</a></li>
+                <li><a href="javascript:void(0)">3_submenu</a></li>
+                <li><a href="javascript:void(0)">4_submenu</a></li>
+                <li><a href="javascript:void(0)">5_submenu</a></li>
+              </ul>
+            </li>
+            <li>
+              <a href="javascript:void(0)">3_mainmenu</a>
+              <ul class="sub-menu">
+                <li><a href="javascript:void(0)">1_submenu</a></li>
+                <li><a href="javascript:void(0)">2_submenu</a></li>
+                <li><a href="javascript:void(0)">3_submenu</a></li>
+                <li><a href="javascript:void(0)">4_submenu</a></li>
+                <li><a href="javascript:void(0)">5_submenu</a></li>
+              </ul>
+            </li>
+            <li>
+              <a href="javascript:void(0)">4_mainmenu</a>
+              <ul class="sub-menu">
+                <li><a href="javascript:void(0)">1_submenu</a></li>
+                <li><a href="javascript:void(0)">2_submenu</a></li>
+                <li><a href="javascript:void(0)">3_submenu</a></li>
+                <li><a href="javascript:void(0)">4_submenu</a></li>
+                <li><a href="javascript:void(0)">5_submenu</a></li>
+              </ul>
+            </li>
+          </ul>
+        </nav>
+      </header>
+      <main>
+        <section></section>
+      </main>
+      <footer></footer>
+    </div>
+  </body>
+</html>

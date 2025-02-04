@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>01Relative</title>
+    <style>
+      div {
+        width: 50px;
+        height: 50px;
+        border: 1px solid;
+        background-color: orange;
+      }
+      div:nth-child(1) {
+        position: relative;
+        left: 10px;
+        top: 10px;
+      }
+      div:nth-child(2) {
+        position: relative;
+        left: -10px;
+      }
+      div:nth-child(3) {
+        position: relative;
+        left: 50vw;
+      }
+      div:nth-child(4) {
+        position: relative;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        margin: auto;
+        /* 세로중앙 정렬이 안되는 이유는 이 relative 뷰포트는 그 자신이라서 4번째 줄의 좌우는 중앙정렬 되지만, 위아래는 안된다. */
+      }
+    </style>
+  </head>
+  <body>
+    <div>1</div>
+    <div>2</div>
+    <div>3</div>
+    <div>4</div>
+  </body>
+</html>
