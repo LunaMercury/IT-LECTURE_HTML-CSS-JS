@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+
+      /* 커스텀 태그 */
+      .title-font {
+        font-weight: 600;
+      }
+
+      /* common */
+      a {
+        text-decoration: none;
+        color: black;
+      }
+
+      ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        margin: 0;
+      }
+
+      /* layout */
+      .wrapper {
+      }
+
+      /* header */
+      .wrapper > header {
+        background-color: lightblue;
+      }
+
+      .wrapper > header > .top-header {
+        height: 50%;
+
+        display: flex;
+        align-items: center;
+        padding: 10px;
+      }
+
+      .wrapper > header > nav {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 5px 20px;
+        background-color: black;
+        color: white;
+
+        flex-wrap: wrap;
+      }
+      .wrapper > header > nav > .nav-logo {
+        min-height: 80px;
+        border: 1px solid white;
+
+        display: flex;
+        flex-basis: 400px;
+        flex-grow: 1;
+      }
+      .wrapper > header > nav > ul.nav-menu {
+        height: 100%;
+        min-height: 80px;
+        border: 1px solid white;
+
+        flex-basis: 400px;
+        flex-grow: 1;
+        flex-shrink: 0;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+      }
+      .wrapper > header > nav > ul.nav-menu > li {
+        height: 100%;
+        border: 1px solid wheat;
+
+        flex-grow: 1;
+        flex-basis: 80px;
+        flex-shrink: 0;
+        min-height: 80px;
+      }
+
+      @media (max-width: 800px) {
+        .wrapper > header > nav > .nav-logo {
+          align-items: center;
+          justify-content: center;
+          text-align: center;
+          flex-direction: column;
+        }
+        .wrapper > header > nav > ul.nav-menu > li {
+          flex-direction: column;
+          min-height: 80px;
+          line-height: 80px;
+          font-size: 1.2rem;
+        }
+      }
+
+      /* main  */
+      .wrapper > main {
+      }
+
+      .wrapper > main > section {
+      }
+      .wrapper > main > section > .card-container {
+        display: flex;
+        justify-content: start;
+        align-items: center;
+        position: relative;
+
+        flex-wrap: wrap;
+        gap: 10px;
+        padding: 0 10px;
+      }
+      .wrapper > main > section > .card-container > .card {
+        border: 1px solid;
+        border-radius: 10px;
+
+        flex-grow: 1;
+        flex-shrink: 1;
+        flex-basis: 475px;
+        padding: 5px;
+      }
+
+      .container {
+        border: 1px solid;
+      }
+      .media-item {
+        background-color: rgba(95, 158, 160, 0.479);
+        display: flex;
+        justify-content: start;
+        align-items: center;
+        padding: 5px;
+        flex-wrap: wrap;
+        gap: 5px;
+      }
+      .media-img {
+        height: 100px;
+        width: 100px;
+        background-color: gray;
+        flex-grow: 1;
+      }
+      .media-content {
+        border: 1px solid;
+        flex-grow: 10;
+        flex-basis: 600px;
+      }
+
+      /* footer */
+      .wrapper > footer > .footer {
+        background-color: black;
+        color: white;
+        display: flex;
+        justify-content: space-between;
+        padding: 0 15px;
+        flex-wrap: wrap;
+      }
+      .wrapper > footer > .footer > .footer-section {
+        flex-grow: 1;
+        flex-basis: 220px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="wrapper">
+      <header>
+        <div class="top-header"><h3>1. 네비게이션 바 레이아웃</h3></div>
+        <nav>
+          <div class="nav-logo title-font">Logo</div>
+          <ul class="nav-menu">
+            <li>Home</li>
+            <li>About</li>
+            <li>Services</li>
+            <li>Contact</li>
+          </ul>
+        </nav>
+      </header>
+      <main>
+        <section>
+          <h2>2. 카드 레이아웃</h2>
+          <div class="card-container">
+            <div class="card">
+              <h3>Product 1</h3>
+              <p>
+                상품 설명이 들어갑니다. 실무에서 자주 사용되는 카드 형태의
+                레이아웃입니다.
+              </p>
+            </div>
+            <div class="card">
+              <h3>Product 2</h3>
+              <p>
+                반응형으로 구현되어 화면 크기에 따라 자동으로 배치가 조절됩니다.
+              </p>
+            </div>
+            <div class="card">
+              <h3>Product 3</h3>
+              <p>
+                flex-wrap과 flex-basis를 활용하여 유동적인 레이아웃을
+                구현했습니다.
+              </p>
+            </div>
+          </div>
+        </section>
+        <section>
+          <h2>3. 미디어 컨텐츠 레이아웃</h2>
+          <div class="container">
+            <div class="media-item">
+              <div class="media-img"></div>
+              <div class="media-content">
+                <h3>뉴스 제목</h3>
+                <p>
+                  뉴스 내용이 들어갑니다. 이미지와 텍스트가 나란히 배치되는
+                  레이아웃입니다.
+                </p>
+              </div>
+            </div>
+            <div class="media-item">
+              <div class="media-img"></div>
+              <div class="media-content">
+                <h3>블로그 포스트</h3>
+                <p>블로그 내용이 들어갑니다. 모바일에서는 세로로 배치됩니다.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+      <footer>
+        <h2>4. 반응형 푸터</h2>
+        <footer class="footer">
+          <div class="footer-section">
+            <h3>About Us</h3>
+            <p>회사 소개 내용이 들어갑니다.</p>
+          </div>
+          <div class="footer-section">
+            <h3>Contact</h3>
+            <p>연락처 정보가 들어갑니다.</p>
+          </div>
+          <div class="footer-section">
+            <h3>Follow Us</h3>
+            <p>소셜 미디어 링크가 들어갑니다.</p>
+          </div>
+        </footer>
+      </footer>
+    </div>
+  </body>
+</html>

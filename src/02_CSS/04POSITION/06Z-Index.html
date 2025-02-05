@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>06Z-Index</title>
+    <style>
+      /* position이 설정이 안 되어있는 요소의 스타일엔 z-index는 설정할 수 없다 */
+      /* z-index : auto - 순서에 맞게 z-index를 고려 */
+
+      * {
+        box-sizing: border-box;
+      }
+      .parent {
+        width: 500px;
+        height: 500px;
+        background-color: royalblue;
+      }
+      .parent > .son {
+        width: 100px;
+        height: 100px;
+        background-color: orange;
+        border: 1px solid;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        font-weight: 800;
+        font-size: 3rem;
+      }
+      .parent > .son:nth-child(1) {
+        position: static;
+        z-index: 10;
+      }
+      .parent > .son:nth-child(2) {
+        position: relative;
+        top: -20px;
+        left: 20px;
+        background-color: magenta;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="parent">
+      <div class="son">1</div>
+      <div class="son">2</div>
+      <div class="son">3</div>
+      <div class="son">4</div>
+    </div>
+  </body>
+</html>

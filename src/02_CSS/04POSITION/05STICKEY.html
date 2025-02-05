@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>05STICKEY</title>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        height: 3000px;
+      }
+      .wrapper > main > section {
+        height: 500px;
+        width: 200vw;
+      }
+      .wrapper > main > section > .parent {
+        width: 500px;
+        height: 500px;
+        background-color: royalblue;
+        position: relative;
+
+        display: flex;
+        justify-content: space-between;
+        align-items: start;
+
+        margin-top: 250px;
+      }
+      .wrapper > main > section > .parent > .son {
+        width: 100px;
+        height: 100px;
+        background-color: orange;
+        border: 1px solid;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      /* relative */
+      .wrapper > main > section > .parent > .son:nth-child(1) {
+        position: relative;
+        left: 10px;
+        top: 10px;
+      }
+
+      /* absolute */
+      .wrapper > main > section > .parent > .son:nth-child(2) {
+        position: absolute;
+        left: 100px;
+        top: 0;
+      }
+
+      /* fixed */
+      .wrapper > main > section > .parent > .son:nth-child(3) {
+        position: fixed;
+        left: 250px;
+        top: 250px;
+      }
+
+      /* stickey */
+      .wrapper > main > section > .parent > .son:nth-child(4) {
+        position: sticky;
+        left: 0;
+        top: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <div class="top-header"></div>
+        <nav></nav>
+      </header>
+      <main>
+        <section>
+          <div class="parent">
+            <div class="son">relative</div>
+            <div class="son">absolute</div>
+            <div class="son">fixed</div>
+            <div class="son">stickey</div>
+          </div>
+        </section>
+      </main>
+      <footer></footer>
+    </div>
+  </body>
+</html>

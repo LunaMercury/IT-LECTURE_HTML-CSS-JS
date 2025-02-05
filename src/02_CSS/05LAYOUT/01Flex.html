@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>01Flex</title>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+      }
+      .wrapper {
+        width: 1280px;
+        height: auto;
+        margin: 0 auto;
+        border: 1px solid;
+        padding: 10px;
+      }
+      .parent,
+      .parent2 {
+        height: 150px;
+        border: 1px solid;
+
+        display: flex;
+        /* 수평배치 : center, right, left, space-between, space-evenly, space-around */
+        justify-content: center;
+        /* item간 여백지정 없는 설정 시 gap option 사용 가능 */
+        gap: 10px;
+        /* 수직배치 : start, end, center, flex-start, flex-end*/
+        align-items: center;
+        /* flex 방향 : row, column */
+        flex-direction: row-reverse;
+      }
+      .parent2 {
+        flex-direction: row;
+        gap: 10px;
+        flex-wrap: wrap;
+        justify-content: left;
+        padding: 15px;
+        height: auto;
+      }
+      .child {
+        border: 1px solid;
+        /* height: 40px; */
+        width: 120px;
+      }
+      .child:nth-child(1) {
+        /* stretch : 부모 크기에 맞게 늘려주는 설정 */
+        align-self: stretch;
+      }
+      .child:nth-child(3) {
+        align-self: flex-start;
+      }
+      .child:nth-child(4) {
+        align-self: end;
+      }
+
+      .child2 {
+        border: 1px solid;
+        width: 200px;
+        height: 200px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrapper">
+      <div class="parent">
+        <div class="child">1</div>
+        <div class="child">2</div>
+        <div class="child">3</div>
+        <div class="child">4</div>
+        <div class="child">5</div>
+      </div>
+      <div class="parent2">
+        <div class="child2">1</div>
+        <div class="child2">2</div>
+        <div class="child2">3</div>
+        <div class="child2">4</div>
+        <div class="child2">5</div>
+        <div class="child2">6</div>
+        <div class="child2">7</div>
+        <div class="child2">8</div>
+        <div class="child2">9</div>
+        <div class="child2">10</div>
+        <div class="child2">11</div>
+        <div class="child2">12</div>
+        <div class="child2">13</div>
+        <div class="child2">14</div>
+        <div class="child2">15</div>
+        <div class="child2">16</div>
+        <div class="child2">17</div>
+        <div class="child2">18</div>
+        <div class="child2">19</div>
+        <div class="child2">20</div>
+      </div>
+    </div>
+  </body>
+</html>

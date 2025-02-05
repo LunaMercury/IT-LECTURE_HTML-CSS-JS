@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+      /* common */
+      a {
+        text-decoration: none;
+        color: black;
+      }
+      ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        margin: 0;
+      }
+
+      /* layout */
+      .wrapper {
+      }
+      /* header */
+      .wrapper > header {
+      }
+      .wrapper > header > .top-header {
+      }
+
+      .wrapper > header > nav {
+        height: 50px;
+      }
+      /* main-menu */
+      .wrapper > header > nav > ul.main-menu {
+        border: 1px solid rgba(128, 128, 128, 0.479);
+        display: flex;
+        justify-content: space-between;
+        height: 100%;
+        max-width: 1250px;
+        position: relative;
+        margin: 0 auto;
+      }
+      .wrapper > header > nav > ul.main-menu > li {
+        width: 100%;
+        height: 100%;
+        line-height: 50px;
+        text-align: center;
+      }
+      .wrapper > header > nav > ul.main-menu > li > a {
+        background-color: yellowgreen;
+        display: block;
+      }
+
+      /* sub-menu */
+      .wrapper > header > nav > ul.main-menu > li > ul.sub-menu {
+        display: flex;
+        background-color: aqua;
+      }
+      .wrapper > header > nav > ul.main-menu > li > ul.sub-menu > div {
+        width: 100%;
+        display: none;
+      }
+      .wrapper > header > nav > ul.main-menu > li > ul.sub-menu > div > li {
+        position: relative;
+        border: 1px solid rosybrown;
+      }
+      .wrapper > header > nav > ul.main-menu > li > ul.sub-menu > div > li > a {
+        background-color: red;
+        display: block;
+      }
+      .wrapper
+        > header
+        > nav
+        > ul.main-menu
+        > li
+        > ul.sub-menu
+        > div
+        > li
+        > ul {
+        display: none;
+        position: absolute;
+        background-color: wheat;
+        width: 200px;
+        top: 0;
+        left: 100%;
+        z-index: 2;
+      }
+
+      /* event */
+      .wrapper
+        > header
+        > nav
+        > ul.main-menu
+        > li:hover
+        > ul.sub-menu
+        > div.sub-menu-list {
+        display: block;
+      }
+
+      .wrapper
+        > header
+        > nav
+        > ul.main-menu
+        > li
+        > ul.sub-menu
+        > div.sub-menu-list
+        > li:hover
+        > ul {
+        display: block;
+        z-index: 2;
+      }
+
+      /* main  */
+      .wrapper > main {
+      }
+      .wrapper > main > section {
+      }
+      /* footer */
+      .wrapper > footer {
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <div class="top-header"></div>
+        <nav>
+          <ul class="main-menu">
+            <li>
+              <a href="javascript:void(0)">강아지 사료</a>
+              <ul class="sub-menu">
+                <div class="sub-menu-list">
+                  <li>
+                    <a href="javascript:void(0)">브랜드별</a>
+                    <ul>
+                      <li><a href="javascript:void(0)">건강백서</a></li>
+                      <li><a href="javascript:void(0)">GO</a></li>
+                      <li><a href="javascript:void(0)">네츄럴시그니쳐</a></li>
+                    </ul>
+                  </li>
+                  <li>
+                    <a href="javascript:void(0)">연령별</a>
+                    <ul>
+                      <li><a href="javascript:void(0)">전연령</a></li>
+                      <li><a href="javascript:void(0)">자견용</a></li>
+                      <li><a href="javascript:void(0)">성견용</a></li>
+                    </ul>
+                  </li>
+                  <li><a href="javascript:void(0)">임박할인</a></li>
+                </div>
+                <div class="sub-menu-image">
+                  <img
+                    src="https://polypark.kr/web/upload/appfiles/0zdpAngaKBFnlCcCqpCU4A/6a3ef7e1f41cf47060524e4bb4bc3d13.png"
+                    alt=""
+                  />
+                </div>
+              </ul>
+            </li>
+            <li>
+              <a href="javascript:void(0)">강아지 사료</a>
+              <ul class="sub-menu">
+                <div class="sub-menu-list">
+                  <li>
+                    <a href="javascript:void(0)">브랜드별</a>
+                    <ul>
+                      <li><a href="javascript:void(0)">건강백서</a></li>
+                      <li><a href="javascript:void(0)">GO</a></li>
+                      <li><a href="javascript:void(0)">네츄럴시그니쳐</a></li>
+                    </ul>
+                  </li>
+                  <li>
+                    <a href="javascript:void(0)">연령별</a>
+                    <ul>
+                      <li><a href="javascript:void(0)">전연령</a></li>
+                      <li><a href="javascript:void(0)">자견용</a></li>
+                      <li><a href="javascript:void(0)">성견용</a></li>
+                    </ul>
+                  </li>
+                  <li><a href="javascript:void(0)">임박할인</a></li>
+                </div>
+                <div class="sub-menu-image">
+                  <img
+                    src="https://polypark.kr/web/upload/appfiles/0zdpAngaKBFnlCcCqpCU4A/6a3ef7e1f41cf47060524e4bb4bc3d13.png"
+                    alt=""
+                  />
+                </div>
+              </ul>
+            </li>
+          </ul>
+        </nav>
+      </header>
+      <main>
+        <section></section>
+      </main>
+      <footer></footer>
+    </div>
+  </body>
+</html>
