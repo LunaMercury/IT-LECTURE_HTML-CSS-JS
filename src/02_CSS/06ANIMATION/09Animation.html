@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>09Animation</title>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+      div {
+        border: 1px solid;
+        width: 150px;
+        height: 150px;
+        margin: 50px;
+      }
+      div:nth-child(1) {
+        animation-name: moving1;
+        animation-duration: 2s;
+        animation-iteration-count: infinite;
+        animation-direction: alternate;
+      }
+      div:nth-child(2) {
+        animation-name: moving2;
+        animation-duration: 2s;
+        animation-iteration-count: infinite;
+        animation-direction: alternate;
+      }
+      div:nth-child(3) {
+      }
+
+      @keyframes moving1 {
+        from {
+          margin-left: 80%;
+        }
+        to {
+          margin-left: 50px;
+        }
+        0% {
+          background-color: red;
+        }
+        25% {
+          background-color: orange;
+        }
+        50% {
+          background-color: yellow;
+        }
+        75% {
+          background-color: green;
+        }
+        100% {
+          background-color: blue;
+        }
+      }
+      @keyframes moving2 {
+        from {
+          margin-left: 80%;
+        }
+        to {
+          margin-left: 50px;
+        }
+        0% {
+          background-color: red;
+          transform: rotate(0);
+        }
+        25% {
+          background-color: orange;
+          transform: rotate(45deg);
+        }
+        50% {
+          background-color: yellow;
+          transform: rotate(90deg);
+        }
+        75% {
+          background-color: green;
+          transform: rotate(180deg) scale(2);
+        }
+        100% {
+          background-color: blue;
+          transform: rotate(180deg);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div></div>
+    <div></div>
+    <div></div>
+  </body>
+</html>

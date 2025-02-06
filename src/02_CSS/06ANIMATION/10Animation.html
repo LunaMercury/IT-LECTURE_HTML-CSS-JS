@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        width: 100vw;
+      }
+      div {
+        width: 100px;
+        height: 50px;
+        background-color: orange;
+        margin: 10px;
+        position: relative;
+
+        /* animation */
+        animation-name: moving;
+        animation-duration: 5s;
+        animation-iteration-count: infinite;
+        animation-direction: alternate;
+      }
+      .d1 {
+        /* 천천히 - 빠름 - 천천히*/
+        animation-timing-function: ease;
+      }
+      .d2 {
+        /* 천천히 - 빠름 */
+        animation-timing-function: ease-in;
+      }
+      .d3 {
+        /* 빠름 - 천천히 */
+        animation-timing-function: ease-out;
+      }
+      .d4 {
+        /* 천천 - 보통 - 천천 */
+        animation-timing-function: ease-in-out;
+      }
+      .d5 {
+        /* 일정속도 */
+        animation-timing-function: linear;
+      }
+      @keyframes moving {
+        from {
+          left: 0px;
+        }
+        to {
+          left: 90%;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="d1">ease(기본)</div>
+    <div class="d2">ease-in</div>
+    <div class="d3">ease-out</div>
+    <div class="d4">ease-in-out</div>
+    <div class="d5">linear</div>
+  </body>
+</html>

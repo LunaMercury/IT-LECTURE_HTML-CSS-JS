@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>07Animation</title>
+    <style>
+      /* moving1의 애니메이션때문에 스크롤이 발생한다. 이를 억제 */
+      body::-webkit-scrollbar {
+        display: none;
+      }
+      div {
+        width: 400px;
+        height: 40px;
+        background-color: orange;
+        color: white;
+        text-align: center;
+        line-height: 40px;
+        border: 1px solid black;
+      }
+      div:nth-child(1) {
+        animation-name: moving1;
+        animation-duration: 2s;
+        /* 애니메이션 횟수 */
+        animation-iteration-count: 2;
+        /* from 에서 to 로 왔다갔다한다 */
+        animation-direction: alternate;
+      }
+      div:nth-child(2) {
+        position: relative;
+        animation-name: moving2;
+        animation-duration: 2s;
+        animation-direction: alternate;
+      }
+
+      @keyframes moving1 {
+        from {
+          margin-left: 100%;
+        }
+        to {
+          margin-left: 0;
+        }
+      }
+      /* 애니메이션 설계 시 margin보다 포지셔닝인 top,left등을 사용하는 것이 좋다. */
+      @keyframes moving2 {
+        from {
+          top: 100%;
+        }
+        to {
+          top: 0;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div>HELLO WORLD</div>
+    <div>HELLO WORLD</div>
+  </body>
+</html>

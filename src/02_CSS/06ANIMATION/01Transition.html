@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>01Transition</title>
+    <style>
+      div {
+        width: 100px;
+        height: 50px;
+        margin: 10px;
+        background-color: orange;
+      }
+      div:hover {
+        width: 500px;
+      }
+      div:nth-child(1) {
+        transition: 0.5s ease-in-out;
+      }
+      div:nth-child(2) {
+        transition: 0.5s ease-in-out;
+      }
+      div:nth-child(3) {
+        transition: 0.5s ease-in-out;
+      }
+
+      p {
+        border: 1px solid;
+        height: 35px;
+        width: 200px;
+        box-sizing: border-box;
+      }
+      p > input[type="text"] {
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        padding: 0;
+        outline: none;
+        border: 0;
+        font-size: 1.3rem;
+        padding-left: 10px;
+        box-sizing: border-box;
+      }
+      p > span {
+        display: block;
+        width: 0;
+        height: 5px;
+        background-color: lightblue;
+
+        /* 밑줄 그라데이션 */
+        transition: 1s ease-in-out;
+        background: linear-gradient(
+          to right,
+          red,
+          orange,
+          yellow,
+          green,
+          blue,
+          navy,
+          violet
+        );
+      }
+      p > input[type="text"]:focus + span {
+        width: 100%;
+        background: linear-gradient(
+          to right,
+          red,
+          orange,
+          yellow,
+          green,
+          blue,
+          navy,
+          violet
+        );
+      }
+    </style>
+  </head>
+  <body>
+    <div></div>
+    <div></div>
+    <div></div>
+    <hr />
+    <p>
+      <input type="text" />
+      <span></span>
+    </p>
+  </body>
+</html>
