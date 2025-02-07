@@ -1,0 +1,149 @@
+<!-- 화살표 클릭하면 화면 슬라이드 -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>14Slider</title>
+    <!-- google icon -->
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+    />
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        padding: 10px;
+      }
+      .slider-block {
+        width: 100%;
+        height: 500px;
+        margin: 50px auto;
+        border: 1px solid;
+
+        overflow: hidden;
+      }
+      .slider-block > .slider-wrapper {
+        width: 300%;
+        height: 500px;
+        border: 1px solid;
+
+        display: flex;
+        align-items: center;
+        justify-content: start;
+
+        overflow: hidden;
+        position: relative;
+
+        transition: 1s;
+        left: 0;
+      }
+      .slider-block > .slider-wrapper > .item {
+        width: 100vw;
+        height: 500px;
+        /* border: 1px solid red; */
+        position: relative;
+      }
+      .slider-block > .slider-wrapper > .item:nth-child(1) {
+        background-color: orange;
+      }
+      .slider-block > .slider-wrapper > .item:nth-child(2) {
+        background-color: navy;
+      }
+      .slider-block > .slider-wrapper > .item:nth-child(3) {
+        background-color: aqua;
+      }
+
+      .slider-block > .slider-wrapper > .item > label {
+        width: 50px;
+        height: 50px;
+        border: 5px solid white;
+        border-radius: 50%;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        color: white;
+
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        margin: auto;
+      }
+      .slider-block
+        > .slider-wrapper
+        > .item
+        > label
+        > .material-symbols-outlined {
+        font-size: 3rem;
+        display: block;
+        cursor: pointer;
+      }
+      .slider-block > .slider-wrapper > .item > label.prev {
+        left: 10px;
+      }
+      .slider-block > .slider-wrapper > .item > label.next {
+        right: 10px;
+      }
+
+      .slider-block > input[type="radio"] {
+      }
+      .slider-block > input[type="radio"]#forward-2:checked ~ .slider-wrapper {
+        left: -100%;
+      }
+      .slider-block > input[type="radio"]#forward-3:checked ~ .slider-wrapper {
+        left: -200%;
+      }
+      .slider-block > input[type="radio"]#backend-1:checked ~ .slider-wrapper {
+        left: 0;
+      }
+      .slider-block > input[type="radio"]#backend-2:checked ~ .slider-wrapper {
+        left: -100%;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="slider-block">
+      <input type="radio" id="forward-2" name="sliderradio" />
+      <input type="radio" id="forward-3" name="sliderradio" />
+      <input type="radio" id="backend-1" name="sliderradio" checked />
+      <input type="radio" id="backend-2" name="sliderradio" />
+      <div class="slider-wrapper">
+        <!-- 1번 슬라이드 -->
+        <div class="item">
+          <label for="" class="prev">
+            <span class="material-symbols-outlined">arrow_left</span>
+          </label>
+          <label for="forward-2" class="next"
+            ><span class="material-symbols-outlined">arrow_right</span>
+          </label>
+          <div class="show one">SLIDER-01</div>
+        </div>
+        <!-- 2번 슬라이드 -->
+        <div class="item">
+          <label for="backend-1" class="prev">
+            <span class="material-symbols-outlined">arrow_left</span>
+          </label>
+          <label for="forward-3" class="next">
+            <span class="material-symbols-outlined">arrow_right</span>
+          </label>
+          <div class="show two">SLIDER-02</div>
+        </div>
+        <!-- 3번 슬라이드 -->
+        <div class="item">
+          <label for="backend-2" class="prev">
+            <span class="material-symbols-outlined">arrow_left</span>
+          </label>
+          <label for="" class="next">
+            <span class="material-symbols-outlined">arrow_right</span>
+          </label>
+          <div class="show three">SLIDER-03</div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

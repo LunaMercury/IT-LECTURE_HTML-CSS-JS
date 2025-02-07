@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>13Slider</title>
+    <!-- google icon -->
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+    />
+    <style>
+      .material-symbols-outlined {
+        font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
+      }
+
+      .slider-block {
+        width: 1200px;
+        height: 100px;
+        border: 1px solid;
+        margin: 0 auto;
+        padding: 0 20px;
+
+        display: flex;
+        align-items: center;
+        overflow: hidden;
+
+        position: relative;
+      }
+      .slider-block > input[type="radio"] {
+        display: none;
+      }
+      .slider-block > label {
+        width: 25px;
+        height: 25px;
+        background-color: orange;
+        border-radius: 50%;
+        color: white;
+        padding: 5px;
+
+        position: absolute;
+
+        z-index: 10;
+        cursor: pointer;
+      }
+      .slider-block > label.prev {
+        left: 0;
+      }
+      .slider-block > label.next {
+        right: 0;
+      }
+      .slider-block > .slider-wrapper {
+        width: 3000px;
+        height: 80px;
+        border: 1px solid;
+
+        display: flex;
+        justify-content: left;
+        align-items: center;
+        gap: 10px;
+
+        position: relative;
+
+        transition: 1s;
+      }
+      .slider-block > .slider-wrapper > .item {
+        width: 120px;
+        height: 45px;
+        border: 1px solid;
+        border-radius: 5px;
+      }
+
+      /* 슬라이드 작업 */
+      .slider-block > input[type="radio"]#r-next:checked ~ .slider-wrapper {
+        left: -1000px;
+      }
+      .slider-block > input[type="radio"]#r-prev:checked ~ .slider-wrapper {
+        left: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="slider-block">
+      <input type="radio" id="r-prev" name="sliderbutton" checked />
+      <input type="radio" id="r-next" name="sliderbutton" />
+      <label for="r-prev" class="prev">
+        <span class="material-symbols-outlined">arrow_left</span>
+      </label>
+      <label for="r-next" class="next">
+        <span class="material-symbols-outlined">arrow_right</span>
+      </label>
+      <div class="slider-wrapper">
+        <div class="item">01</div>
+        <div class="item">02</div>
+        <div class="item">03</div>
+        <div class="item">04</div>
+        <div class="item">05</div>
+        <div class="item">06</div>
+        <div class="item">07</div>
+        <div class="item">08</div>
+        <div class="item">09</div>
+        <div class="item">10</div>
+        <div class="item">11</div>
+        <div class="item">12</div>
+        <div class="item">13</div>
+        <div class="item">14</div>
+        <div class="item">15</div>
+      </div>
+    </div>
+  </body>
+</html>

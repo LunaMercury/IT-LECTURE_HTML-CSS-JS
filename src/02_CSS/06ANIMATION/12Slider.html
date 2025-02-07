@@ -1,0 +1,88 @@
+<!-- 화면 자동으로 움직이고, hovering 하면 이미지 커짐 -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>12Slider</title>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+      }
+      .slider-block {
+        width: 1280px;
+        height: 300px;
+        margin: 50px auto;
+        border: 1px solid;
+
+        overflow: hidden;
+
+        display: flex;
+        align-items: center;
+      }
+      .slider-block > .slider-wrapper {
+        height: 150px;
+        width: 3000px;
+
+        display: flex;
+        align-items: center;
+
+        position: relative;
+
+        animation-name: moving;
+        animation-duration: 10s;
+        animation-timing-function: linear;
+        animation-iteration-count: infinite;
+        animation-direction: normal;
+      }
+      .slider-block > .slider-wrapper > .item {
+        width: 200px;
+        height: 150px;
+        border: 1px solid;
+        margin: 10px;
+        background-color: white;
+
+        transition: 0.5s ease-in-out;
+      }
+      .slider-block > .slider-wrapper > .item:first-child {
+        margin-left: 0;
+      }
+
+      @keyframes moving {
+        from {
+          left: 0;
+        }
+
+        to {
+          left: -98%;
+        }
+      }
+      .slider-block > .slider-wrapper:hover {
+        animation-play-state: paused;
+      }
+      .slider-block > .slider-wrapper > .item:hover {
+        transform: scale(1.5);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="slider-block">
+      <div class="slider-wrapper">
+        <div class="item">01</div>
+        <div class="item">02</div>
+        <div class="item">03</div>
+        <div class="item">04</div>
+        <div class="item">05</div>
+        <div class="item">06</div>
+        <div class="item">07</div>
+        <div class="item">08</div>
+        <div class="item">09</div>
+        <div class="item">10</div>
+      </div>
+    </div>
+  </body>
+</html>

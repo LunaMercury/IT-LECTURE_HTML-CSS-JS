@@ -46,16 +46,18 @@
         border-radius: 50%;
         border: 1px solid;
 
-        /* 회전시 뒷면은 표시안함 */
+        /* 회전시 뒷면은 표시안함. 이 속성 없으면 뒤집어져도 .back이 없으면 계속 빨간색 */
         backface-visibility: hidden;
       }
       .item > .front {
         background-color: red;
       }
+      /* 뒤집어져 있는 상태. 그리고 위의 backface hidden 되어있어서 색없음 */
       .item > .back {
         background-color: navy;
         transform: rotateY(180deg);
       }
+      /* 이 태그로 인해 front 와 back 둘 다 동시에 돈다. */
       .container:hover .item {
         transform: rotateY(180deg);
       }
