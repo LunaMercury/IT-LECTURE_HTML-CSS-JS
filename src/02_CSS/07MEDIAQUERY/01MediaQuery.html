@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>01MediaQuery</title>
+    <!-- common -->
+    <link rel="stylesheet" href="./CSS/common.css" />
+    <!-- desktop -->
+    <link rel="stylesheet" href="./CSS/destop.css" />
+    <!-- tablet -->
+    <link
+      rel="stylesheet"
+      href="./CSS/tablet.css"
+      media="all and (max-width:1024px)"
+    />
+    <!-- mobile -->
+    <link
+      rel="stylesheet"
+      href="./CSS/mobile.css"
+      media="all and (max-width:380px)"
+    />
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+      div {
+        height: 150px;
+        background-color: orange;
+      }
+
+      /* 
+        미디어 쿼리 장치 옵션. 보통 all이나 screen을 사용
+        all : 모든 미디어 유형에 적용
+        print : 인쇄를 위한 미디어 타입
+        screen : 화면 기반의 미디어 타입 (주로 컴퓨터, 태블릿 등)
+        speech : 음성 출력 장치를 위한 미디어 타입
+      */
+
+      /* 태블릿 width : 1024px */
+      @media all and (max-width: 1024px) {
+        div {
+          background-color: green;
+        }
+      }
+      /* 모바일 */
+      @media all and (max-width: 480px) {
+        div {
+          background-color: royalblue;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div></div>
+  </body>
+</html>
