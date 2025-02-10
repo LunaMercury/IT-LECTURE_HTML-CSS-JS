@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>02보간법</title>
+  </head>
+  <body>
+    <script>
+      // 변수지정 : let, 상수지정 : const
+      let str1 = "hello";
+      let str2 = "world";
+      console.log(str1 + str2);
+
+      //보간법
+      //변수, 함수 호출 및 산술 표현식을 문자열에 직접 삽입할 수 있는 기능
+      // ${value} 형식을 사용, ★백틱(``)에만 사용가능
+      // ${보간법 적용 범위}
+      let str3 = `TEST1 : ${str1}/${str2}`;
+      let str4 = `TEST2 : ${10 + 20 + 30}`;
+      let str5 = `10>20 ? ${10 > 20}`;
+      console.log(str3);
+      console.log(str4);
+      console.log(str5);
+    </script>
+  </body>
+</html>

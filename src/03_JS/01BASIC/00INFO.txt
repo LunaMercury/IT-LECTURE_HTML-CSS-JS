@@ -1,0 +1,19 @@
+<!-- 자바스크립트 참고 문서 API -->
+
+<!-- MDN 웹 문서 (Mozilla Developer Network):
+
+사이트 링크: https://developer.mozilla.org/ko/docs/Web/JavaScript
+MDN 웹 문서는 자바스크립트와 관련된 모든 정보를 포괄적으로 제공하는 정통 API 문서입니다. 문법, 객체, 함수, 메서드, 이벤트 등에 대한 상세한 설명과 예제를 찾을 수 있습니다.
+JavaScript.info:
+
+사이트 링크: https://ko.javascript.info/
+JavaScript.info는 자바스크립트의 핵심 개념과 문법을 다루는 튜토리얼과 참고 자료를 제공하는 사이트입니다. 상세한 내용과 예제 코드를 통해 자바스크립트를 학습할 수 있습니다.
+W3Schools JavaScript Tutorial:
+
+사이트 링크: https://www.w3schools.com/js/
+W3Schools는 다양한 웹 개발 기술에 대한 튜토리얼과 참고 자료를 제공하는 사이트로, 자바스크립트에 대한 상세한 문법과 예제를 포함하고 있습니다.
+ECMAScript 문서:
+
+사이트 링크: https://www.ecma-international.org/ecma-262/
+ECMAScript 문서는 자바스크립트 언어의 표준 사양인 ECMAScript에 대한 공식 문서입니다. 최신 ECMAScript 버전의 사양과 문법을 확인하고 싶을 때 유용하게 사용할 수 있습니다. 
+-->

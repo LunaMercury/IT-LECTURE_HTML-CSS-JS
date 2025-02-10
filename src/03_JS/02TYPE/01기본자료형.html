@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>01기본자료형</title>
+  </head>
+  <body>
+    <script>
+      // number
+      document.write(typeof 10 + "<br/>");
+      document.write(typeof 10.5 + "<br/>");
+      document.write("<hr/>");
+      // string
+      document.write(typeof "Hello World" + "<br/>");
+      document.write(typeof "Hello World" + "<br/>"); //작은따옴표 썼는데 prettier로 자동으로 쌍따옴표로 변환됨. 작은따옴표도 가능.
+      document.write(typeof `Hello World` + "<br/>"); //1번 숫자 옆 `
+      document.write("<hr/>");
+      // object : { key : value, key : value, ......}
+      document.write(typeof { name: "홍길동", age: 55 } + "<br/>");
+      document.write(
+        typeof JSON.stringify({ name: "홍길동", age: 55 }) + "<br/>"
+      ); //stringify : JSON 형태를 가지도록 하는 함수. name:"홍길동" -> "name":"홍길동"으로 바꿔준다.
+      document.write("<hr/>");
+      // null
+      let value1 = null; //변수 초기화(공간형성 + 기본값 삽입(개발자가 의도한 null값 삽입)) - 조건식(False)
+      document.write(typeof value1 + "<br/>");
+      // undefined
+      let value2; //변수 선언 (공간형성 + 기본값은 생략(undefined 자료형의 값 저장)) - 조건식(False)
+      document.write(typeof value2 + "<br/>");
+      // boolean
+      document.write(typeof true + "<br/>");
+    </script>
+  </body>
+</html>

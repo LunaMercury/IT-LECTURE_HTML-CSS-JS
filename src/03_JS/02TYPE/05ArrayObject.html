@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>05ArrayObject</title>
+  </head>
+  <body>
+    <script>
+      // 배열. 다양한 자료형을 저장할 수 있다.
+      let arr = ["str1", null, true, undefined, { name: "홍길동", age: 15 }];
+      console.log(arr, typeof arr);
+      console.log(arr[0], typeof arr[0]);
+      console.log(arr[1], typeof arr[1]);
+      console.log(arr[2], typeof arr[2]);
+      console.log(arr[3], typeof arr[3]);
+      console.log(arr[4], typeof arr[4]);
+
+      // --------------------
+      // 배열의 동적 확장
+      // --------------------
+      // arr을 [4] 까지만 만들었는데 밑의 arr[5]를 추가함으로서 배열확장을 하였다.(동적확장)
+      arr[5] = 100;
+      console.log(arr);
+      // arr[6-9]는 없는 상태에서 바로 arr[10]에 자료를 입력할 수 있다. arr[6-9]내용은 undefined가 된다.
+      arr[10] = "hello world";
+      console.log(arr);
+      console.log("길이 : ", arr.length);
+      // ----------------
+      // 배열 함수 사용해보기
+      // forEach
+      // ()=>{} : 수행 로직을 표현
+      arr.forEach((요소) => {
+        console.log("item", 요소); //요소 하나하나를 item으로 명명
+      });
+      // push - 마지막 idx에 요소 추가
+      // pop - 마지막 idx 요소 제거
+      arr.push("aaa");
+      arr.push("bbb");
+      arr.push("ccc");
+      console.log(arr);
+      arr.pop();
+    </script>
+  </body>
+</html>

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>03Object</title>
+    <style>
+      button {
+        margin-top: 5px;
+      }
+      .status-block {
+        width: 500px;
+        height: 50px;
+        border: 1px solid;
+        padding: 5px;
+        margin-top: 10px;
+      }
+      .gauge {
+        width: 0px;
+        height: 45px;
+        background-color: orange;
+
+        transition: 0.5s;
+      }
+    </style>
+  </head>
+  <body>
+    <button onclick="poppy.sound()">짖어!</button><br />
+    <button onclick="poppy.toString()">속성</button>
+    <hr />
+    <button onclick="myCar.accel()">가속</button><br />
+    <button onclick="myCar.break()">감속</button><br />
+    <button onclick="myCar.status()">상태</button>
+    <div class="status-block">
+      <div class="gauge"></div>
+    </div>
+
+    <script>
+      // Object < 객체
+      // 객체 구성요소
+      // 속성(객체의 고유 데이터 - 저장대상) / 기능
+
+      // const는 내용을 바꿀 수 없다.
+      const poppy = {
+        // 속성
+        name: "뽀삐",
+        kind: "포메라니안",
+        age: 1,
+        birthdate: "2025-01-01",
+        // 기능
+        sound: function () {
+          alert(this.name + "이(가) 짖습니다.");
+        },
+        toString: function () {
+          alert(`이름:${this.name}\n나이:${this.age}\n견종:${this.kind}`);
+        },
+      };
+      console.log(poppy);
+
+      // 아래와 같이 const라서 추가 속성 및 내용을 바꿀 수 없다. let이라면 가능하다.
+      //   const poppy = {
+      //     color: "red",
+      //   };
+
+      // 아래와 같이 value값은 바꿀 수 있다.
+      poppy.name = "니모";
+      // color 속성은 정의하지 않았으므로 오류는 안나지만 적용되지 않는다.
+      poppy.color = "red";
+      console.log(poppy);
+
+      const gaugeE1 = document.querySelector(".gauge");
+      const myCar = {
+        // 속성
+        owner: "홍길동",
+        category: "세단",
+        fueltype: "가솔린",
+        speed: 0,
+        min_speed: 0,
+        max_speed: 200,
+        fuelamount: 100,
+        // 기능
+        accel: function () {
+          if (this.speed + 10 > this.max_speed) {
+            this.speed = this.max_speed;
+            alert(`최대 속도에 도달하였습니다. 현재 속도 : ${this.speed}`);
+          }
+          this.speed = this.speed + 10;
+          gaugeE1.style.width = `${this.speed}px`;
+          this.fuelamount = this.fuelamount - 1;
+          console.log(`accel, ${this.owner} 님의 현재 속도 : ${this.speed}`);
+        },
+        break: function () {
+          if (this.speed - 10 < this.min_speed) {
+            this.speed = this.min_speed;
+            alert(`정지해 있습니다. 현재속도 : ${this.min_speed}`);
+          }
+          this.speed = this.speed - 10;
+          gaugeE1.style.width = `${this.speed}px`;
+          this.fuelamount = this.fuelamount - 1;
+          console.log(`break, ${this.owner}님의 현재 속도 : ${this.speed}`);
+        },
+        status: function () {
+          alert(
+            `소유자:${this.owner},\n차종:${this.category}\n현재속도:${this.speed}\n남은연료:${this.fuelamount}`
+          );
+        },
+      };
+      console.log(myCar);
+    </script>
+  </body>
+</html>

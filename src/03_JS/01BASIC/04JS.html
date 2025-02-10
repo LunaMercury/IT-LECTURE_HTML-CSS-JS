@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>04JS</title>
+  </head>
+  <body>
+    <script>
+      console.log("Hello World");
+      console.log("Hello World");
+      console.log(10 + 20 + 30);
+      console.log("10" + (20 + 30));
+      console.log(true);
+      //null은 object. 비어있는 것으로 선언
+      console.log(null);
+      //모른다. 정의하지 않음. 메모리를 사용하고 있지 않다.
+      console.log(undefined);
+
+      //   console.log(typeof "Hello World");
+      //   console.log(typeof "Hello World");
+      //   console.log(typeof (10 + 20 + 30));
+      //   console.log(typeof ("10" + (20 + 30)));
+      //   console.log(typeof true);
+      //   console.log(typeof null);
+      //   console.log(typeof undefined);
+
+      let test;
+      console.log(typeof test);
+      let test2;
+      console.log(typeof test2);
+      // 이상하게 undefined 와 null 둘 다 undefined로 잡힌다.
+      if (test2 == undefined) {
+        console.log("test2 if TEST");
+      }
+      if (test == undefined) {
+        console.log("test if TEST");
+      }
+      if (test1 == undefined) {
+        console.log("test1 if TEST");
+      }
+    </script>
+  </body>
+</html>

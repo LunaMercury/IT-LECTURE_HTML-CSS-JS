@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>01JS</title>
+    <style>
+      body {
+        height: 3000px;
+      }
+      .test {
+        position: fixed;
+        width: 100%;
+        bottom: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <button onclick="alert('hello world')">BTN1</button>
+    <button onclick="alert(33+12)">BTN1</button>
+    <button onclick="alert('hello world\nhellohello\n😀')">BTN1</button>
+    <hr />
+    <div class="test">
+      <a href="javascript:void(0)">TEST1</a>
+      <a href="javascript:alert(10+20)">TEST2</a>
+      <!-- 콘솔에 로그가 남는다. -->
+      <a href="javascript:console.log(10+20)">TEST3</a>
+      <a href="javascript:console.log(obj.name)">TEST4</a>
+    </div>
+
+    <!-- 스크립트는 제일 밑에 작성하는 것이 원칙이다. -->
+    <script>
+      const obj = { name: "aaa", age: "55" };
+    </script>
+  </body>
+</html>
