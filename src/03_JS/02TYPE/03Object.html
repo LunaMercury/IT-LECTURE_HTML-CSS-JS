@@ -57,15 +57,14 @@
       };
       console.log(poppy);
 
-      // 아래와 같이 const라서 추가 속성 및 내용을 바꿀 수 없다. let이라면 가능하다.
+      // 아래의 명령어는 const라서 추가 속성 및 내용을 바꿀 수 없다. let이라면 가능하다.
       //   const poppy = {
       //     color: "red",
       //   };
 
       // 아래와 같이 value값은 바꿀 수 있다.
       poppy.name = "니모";
-      // color 속성은 정의하지 않았으므로 오류는 안나지만 적용되지 않는다.
-      poppy.color = "red";
+      poppy.color = "red"; // color 속성은 정의하지 않았으므로 오류는 발생하지 않지만, 적용되지도 않는다.
       console.log(poppy);
 
       const gaugeE1 = document.querySelector(".gauge");

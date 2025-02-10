@@ -46,6 +46,7 @@
         수학: 0,
         총점: 0,
         평균: 0,
+
         save국어: function () {
           const 국어input = document.querySelector(".korea"); //적절한 selector를 확인해서 입력하세요
           console.log("국어점수 : ", 국어input.value); //국어 input 요소안의 값을 확인, 아마 key-value처럼 input-value쌍인듯?
@@ -71,7 +72,6 @@
           //아래코드완성 - 속성에 저장되어 있는 값을 '총합' 확인 버튼을 눌렀을때  .sum-block 안의 값으로 넣어줍니다
           const sumBlock = document.querySelector(".sum-block");
           sumBlock.innerHTML = this.총점;
-          return this.총점;
         },
         avg: function () {
           //코드추가 - 객체내 저장되어 있는 총점을 나눈 값을 '평균' 속성에 저장합니다(나누기연산자 :'/')
