@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>06Opendata_test</title>
+    <script src="./js/대구광역시_맛집_중구.js"></script>
+  </head>
+  <body>
+    <script>
+      // 중구맛집확인
+      console.log("전체데이터", 중구맛집);
+
+      // 배열Obj만 추출
+      const 중구맛집_data = 중구맛집.data;
+      // console.log("중구맛집data:", 중구맛집.data);
+
+      // FD_CS(음식카테고리)가 '한식'인 맛집만 추출
+      const 중구맛집_한식 = 중구맛집_data.filter((item) => {
+        return item.FD_CS == "한식";
+      });
+      console.log("한식 :", 중구맛집_한식);
+
+      // 상호명과 메뉴, 주소만 추출해서 새로운 배열로 재구성
+      const 중구맛집_한식_상호명메뉴주소 = 중구맛집_한식.map((item) => {
+        return { BZ_NM: item.BZ_NM, MNU: item.MNU, GNG_CS: item.GNG_CS }; //key-value 타입으로 설정해줘야 한다.
+      });
+      console.log("상호명, 메뉴, 주소 :", 중구맛집_한식_상호명메뉴주소);
+
+      // 중구맛집_한식_상호명메뉴주소 에서 메뉴의 값을 메뉴명과 가격으로 분리
+      const RenewaledMenu = 중구맛집_한식_상호명메뉴주소.map((item) => {
+        // <br/> 제거
+        let replacedBrMenu = item.MNU.replaceAll("<br />", "\n");
+        // console.log("replacedBrMenu", replacedBrMenu);
+        // \n을 기준으로 배열로 자르기
+        let menu_arr = replacedBrMenu.split("\n");
+        // console.log("menu_arr", menu_arr);
+        // \n을 기준으로 잘린 배열의 재구성
+        const renewaled_menu =
+          // 메뉴중 가격에 있는 요소의 '원', ',' 제거하기
+          menu_arr.map((menu) => {
+            //공백 기준 자르기(배열)
+            let splited_space = menu.trim().split(/[\s~]+/g); // ' ', ~ 를 기준으로 자르기
+            // splited_space.splice(' ');
+            // console.log(splited_space)
+            // 가격에 '원'제거, ','제거
+            let removed_arr = splited_space.map((menu_2) => {
+              const renewalItem = menu_2
+                .trim()
+                .replace(/(\d{1,3})(?:,\d{3})*(?:원)?/g, (match, str) => {
+                  // console.log(match,str);
+                  const num = match.replace(",", "").replace("원", "");
+                  // console.log('num',num);
+                  return num;
+                });
+              return renewalItem.match(/\d/)
+                ? { PRICE: Number(renewalItem) }
+                : renewalItem;
+            });
+            return removed_arr;
+          });
+        // console.log("renewaled_menu",renewaled_menu);
+        return { BZ_NM: item.BZ_NM, GNG_CS: item.GNG_CS, MNU: renewaled_menu };
+      });
+      console.log("RenewaledMenu", RenewaledMenu);
+
+      //RenewaledMenu에서 주문 리스트(특정 상호명을 선택해서 메뉴추가작업의 결과값을 넣어주시면 됩니다)
+      //장모님 국밥 메뉴 주문 리스트
+      let order_list = [];
+
+      order_list = [
+        //    {"OID":"주문번호",'BZ_NM':'상호명',"GNG_CS":'주소',"MNU":"메뉴명","PRC":"가격","AMT":"수량"} //수량은 임의로
+        {
+          OID: "1111-1111",
+          BZ_NM: "장모님국밥",
+          GNG_CS: "대구광역시 중구 삼덕동2가 149-6",
+          MNU: "돼지국밥",
+          PRC: 9000,
+          AMT: 5,
+        },
+        {
+          OID: "1111-1112",
+          BZ_NM: "장모님국밥",
+          GNG_CS: "대구광역시 중구 삼덕동2가 149-6",
+          MNU: "수육",
+          PRC: 28000,
+          AMT: 2,
+        },
+        {
+          OID: "1111-1113",
+          BZ_NM: "장모님국밥",
+          GNG_CS: "대구광역시 중구 삼덕동2가 149-6",
+          MNU: "순대한접시",
+          PRC: 12000,
+          AMT: 2,
+        },
+        {
+          OID: "1111-1114",
+          BZ_NM: "장모님국밥",
+          GNG_CS: "대구광역시 중구 삼덕동2가 149-6",
+          MNU: "섞어국밥",
+          PRC: 9000,
+          AMT: 4,
+        },
+      ];
+
+      // 1 주문 아이템 리스트의 아이템당 지불금액을 구하세요
+      // ex {OID : "1111-1111" ,PRICE_AMOUNT:45000}
+      // ex {OID : "1111-1112" ,PRICE_AMOUNT:56000}
+      // ...
+      let pricePerItem = order_list.map((item) => {
+        return (item = {
+          OID: item.OID,
+          PRICE_AMOUNT: item.PRC,
+        });
+      });
+      console.log("아이템당 지불금액 :", pricePerItem);
+
+      // 2 총 지불 금액을 구하세요 -
+      // ex {TOTALPRICE :PRICE*AMOUNT의 합}
+      let TOTALPRICE = pricePerItem.map((item) => {
+        let sum = item.reduce((a, b) => {
+          a = 0;
+          return a + b.PRICE_AMOUNT;
+        });
+      });
+    </script>
+  </body>
+</html>

@@ -7,39 +7,164 @@
   </head>
   <body>
     <script>
-      // 배열. 다양한 자료형을 저장할 수 있다.
-      let arr = ["str1", null, true, undefined, { name: "홍길동", age: 15 }];
-      console.log(arr, typeof arr);
-      console.log(arr[0], typeof arr[0]);
-      console.log(arr[1], typeof arr[1]);
-      console.log(arr[2], typeof arr[2]);
-      console.log(arr[3], typeof arr[3]);
-      console.log(arr[4], typeof arr[4]);
+      // // 배열. 다양한 자료형을 저장할 수 있다.
+      // let arr = ["str1", null, true, undefined, { name: "홍길동", age: 15 }];
+      // console.log(arr, typeof arr);
+      // console.log(arr[0], typeof arr[0]);
+      // console.log(arr[1], typeof arr[1]);
+      // console.log(arr[2], typeof arr[2]);
+      // console.log(arr[3], typeof arr[3]);
+      // console.log(arr[4], typeof arr[4]);
 
-      // --------------------
-      // 배열의 동적 확장
-      // --------------------
-      // arr을 [4] 까지만 만들었는데 밑의 arr[5]를 추가함으로서 배열확장을 하였다.(동적확장)
-      arr[5] = 100;
-      console.log(arr);
-      // arr[6-9]는 없는 상태에서 바로 arr[10]에 자료를 입력할 수 있다. arr[6-9]내용은 undefined가 된다.
-      arr[10] = "hello world";
-      console.log(arr);
-      console.log("길이 : ", arr.length);
-      // ----------------
-      // 배열 함수 사용해보기
-      // forEach
-      // ()=>{} : 수행 로직을 표현
-      arr.forEach((요소) => {
-        console.log("item", 요소); //요소 하나하나를 item으로 명명
-      });
-      // push - 마지막 idx에 요소 추가
-      // pop - 마지막 idx 요소 제거
-      arr.push("aaa");
-      arr.push("bbb");
-      arr.push("ccc");
-      console.log(arr);
-      arr.pop();
+      // // --------------------
+      // // 배열의 동적 확장
+      // // --------------------
+      // // arr을 [4] 까지만 만들었는데 밑의 arr[5]를 추가함으로서 배열확장을 하였다.(동적확장)
+      // arr[5] = 100;
+      // console.log(arr);
+      // // arr[6-9]는 없는 상태에서 바로 arr[10]에 자료를 입력할 수 있다. arr[6-9]내용은 undefined가 된다.
+      // arr[10] = "hello world";
+      // console.log(arr);
+      // console.log("길이 : ", arr.length);
+      // // ----------------
+      // // 배열 함수 사용해보기
+      // // forEach
+      // // ()=>{} : 수행 로직을 표현
+      // arr.forEach((요소) => {
+      //   console.log("item", 요소); //요소 하나하나를 item으로 명명
+      // });
+      // // push - 마지막 idx에 요소 추가
+      // // pop - 마지막 idx 요소 제거
+      // arr.push("aaa");
+      // arr.push("bbb");
+      // arr.push("ccc");
+      // console.log(arr);
+      // arr.pop();
+
+      // // 정렬(sort), 누적(reduce), 필터(filter), 재구성(map)
+      // // -----------------------
+      // // 정렬(sort)
+      // // -----------------------
+
+      // let arr_2 = [10, 55, 33, 24, 5, 44, "1", , undefined, 22];
+      // arr_2.sort(); // 배열의 요소들이 문자열로 변환되어 사전편찬순서로 정렬, 기본값은 오름차순. object와 null은 순서에 따라 정렬
+      // arr_2.forEach((item) => {
+      //   console.log(item);
+      // }); // 하나 하나의 아이템마다 콘솔로그를 사용한다.
+      // console.log(arr_2);
+      // arr_2.sort(
+      //   // ()=>{return b-a;} //내림차순 요청. 元형태
+      //   (a, b) => b - a // 내림차순 요청. 간략화
+      // );
+      // arr_2.forEach((item) => {
+      //   console.log("item:", item);
+      // });
+
+      // // -----------------------
+      // // 필터(filter)
+      // // -----------------------
+      // let arr_3 = [
+      //   10,
+      //   15.2,
+      //   "t1",
+      //   "t3",
+      //   30,
+      //   true,
+      //   null,
+      //   100,
+      //   { name: "티모", age: 5 },
+      //   20,
+      // ];
+      // let filtered_arr_3 = arr_3.filter((item) => {
+      //   return typeof item == "number";
+      // });
+      // filtered_arr_3.sort((a, b) => {
+      //   return a - b;
+      // });
+
+      // arr_3
+      //   .filter((item) => {
+      //     return typeof item == "string";
+      //   })
+      //   .forEach((item) => {
+      //     return console.log(item);
+      //   });
+      // console.log(filtered_arr_3);
+
+      // // -----------------------
+      // // 누적 배열.reduce((누산변수, item)=>{return 연산로직}, 누산변수의 초기값)
+      // // -----------------------
+      // let arr_4 = [
+      //   10,
+      //   15.2,
+      //   "t1",
+      //   "t3",
+      //   30,
+      //   true,
+      //   null,
+      //   100,
+      //   { name: "티모", age: 5 },
+      //   20,
+      // ];
+      // const r_val = arr_4
+      //   .filter((item) => {
+      //     return typeof item == "number";
+      //   })
+      //   .reduce((sum, item) => {
+      //     return sum + item;//?? 기본 all인가?
+      //   }, 0);
+      // console.log(r_val);
+
+      // // -----------------------
+      // // 배열 object 처리 [{},{},{},{},{},{}......]
+      // // -----------------------
+      // let arr_5 = [
+      //   { pid: "1", pname: "모니터", price: "30", amount: "10" },
+      //   { pid: "2", pname: "마우스", price: "20", amount: "20" },
+      //   { pid: "3", pname: "키보드", price: "10", amount: "30" },
+      //   { pid: "4", pname: "본체", price: "300", amount: "40" },
+      //   { pid: "5", pname: "헤드셋", price: "15", amount: "50" },
+      // ];
+      // arr_5.forEach((item) => {
+      //   return console.log(item);
+      // });
+      // console.log("-------------------");
+      // arr_5.forEach((item, index) => {
+      //   return console.log(index, item["pname"]); //item.pname 해도 된다.
+      // });
+      // arr_5
+      //   .filter((item) => {
+      //     return Number(item.price) >= 20; // 가격이 20 이상인 object만 필터링
+      //   })
+      //   .filter((item) => {
+      //     return Number(item.amount) >= 20;
+      //   })
+      //   .forEach((item) => {
+      //     return console.log(item);
+      //   });
+
+      // -----------------------
+      // 재구성 배열.map((item)=>{return 재구성할item})
+      // -----------------------
+      let arr_6 = [
+        { pid: "1", pname: "모니터", price: "30", amount: "10" },
+        { pid: "2", pname: "마우스", price: "20", amount: "20" },
+        { pid: "3", pname: "키보드", price: "10", amount: "30" },
+        { pid: "4", pname: "본체", price: "300", amount: "40" },
+        { pid: "5", pname: "헤드셋", price: "15", amount: "50" },
+      ];
+      //수량이 50이상인 요소만 필터링해서, price가 낮은 값 우선으로 오름차순 정렬 후, price*amount 항목을 추가
+      arr_6
+        .filter((item) => {
+          return Number(item.amount) >= 30;
+        })
+        .sort((a, b) => {
+          return a.price - b.price;
+        })
+        .map((item) => {
+          item = { ...item, "total price": item.price * item.amount }; //기존의 아이템 속성을 그대로 가져오는 것을 점 3개를 사용한다[...]
+          console.log("in map", item);
+        });
     </script>
   </body>
 </html>
