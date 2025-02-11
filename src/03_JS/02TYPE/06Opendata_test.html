@@ -118,12 +118,13 @@
 
       // 2 총 지불 금액을 구하세요 -
       // ex {TOTALPRICE :PRICE*AMOUNT의 합}
-      let TOTALPRICE = pricePerItem.map((item) => {
-        let sum = item.reduce((a, b) => {
-          a = 0;
-          return a + b.PRICE_AMOUNT;
-        });
+      let TOTALPRICE = order_list.map((item) => {
+        return (item = { OID: item.OID, TOTALPRICE: item.PRC * item.AMT });
       });
+      console.log("TOTALPRICE :", TOTALPRICE);
+      TOTALPRICE.forEach((element) => {
+        return console.log("타입:", typeof TOTALPRICE.TOTALPRICE);
+      }); //? 타입 출력 어떻게 하는지 풀기
     </script>
   </body>
 </html>
