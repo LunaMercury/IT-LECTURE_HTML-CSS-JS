@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>08Prototype</title>
+  </head>
+  <body>
+    <script>
+      // ---------------------------------------
+      // object 객체 : 객체를 다루는 기본함수 제공
+      // ---------------------------------------
+
+      const obj = { name: "홍길동", age: "55" };
+      console.log(obj);
+      console.log(null);
+
+      // Object의 대소문자에 주의한다.
+      console.log(Object.keys(obj)); // key값만 꺼내고 싶을때
+      console.log(Object.values(obj)); // value값만 꺼내고 싶을
+      console.log(Object.entries(obj)); // 열거 가능한 속성형태(key:value)의 배열로 반환
+
+      let ob1 = { addr: "대구" };
+      let ob2 = { gender: "M" };
+
+      console.log(Object.assign(obj, ob1, ob2)); //obj에 ob1, ob2의 k:v를 복사
+
+      obj.name = "남길동";
+      obj["age"] = 30;
+      console.log(obj);
+
+      //   Object.freeze(obj); // 객체수정불가
+      //   Object.seal(obj); //속성수정불가
+
+      // 프로토타입 함수 정의
+      function Person(name) {
+        this.name = name;
+      }
+      // 객체 생성
+      const person1 = new Person("홍길동"); // person1 은 Person 클래스 적용, 홍길동은 name의 초기값
+      console.log(person1);
+      person1.toString();
+
+      // Person 프로토타입에 기능 추가
+      Person.prototype.hello = function () {
+        console.log(`안녕하세요. 저는 ${this.name} 입니다.`);
+      };
+      const person2 = new Person("남길동");
+      console.log(person2);
+      person1.hello();
+      person2.hello();
+    </script>
+  </body>
+</html>

@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <link rel="stylesheet" href="./css/주문받기.css" />
+
+    <script src="./js/중구맛집.js"></script>
+    <script>
+      const 중구맛집_data = 중구맛집.data;
+
+      const 중구맛집_한식 = 중구맛집_data.filter((item) => {
+        return item.FD_CS == "한식";
+      });
+
+      let 중구맛집_한식_상호명메뉴주소 = 중구맛집_한식
+        .sort((a, b) => {
+          return a.BZ_NM.localeCompare(b.BZ_NM);
+        })
+        .map((item) => {
+          return { BZ_NM: item.BZ_NM, MNU: item.MNU, GNG_CS: item.GNG_CS };
+        });
+
+      //------------------------------------
+      // 중구맛집_한식_상호명메뉴주소 에서 MNU(메뉴) 의 값을 메뉴명:가격(숫자)으로 분리
+      //------------------------------------
+      const RenewaledMenu = 중구맛집_한식_상호명메뉴주소.map((item) => {
+        // <br /> 제거
+        let replcedBrMenu = item.MNU.replaceAll("<br />", "\n");
+        // console.log("replcedBrMenu",replcedBrMenu);
+        // \n를 기준으로 배열로 자르기
+        let menu_arr = replcedBrMenu.trim().split("\n");
+        // console.log(menu_arr);
+        // \n를 기준으로 잘린 배열의 재구성
+        const renewaled_menu =
+          // 메뉴중 가격에 있는 요소의 '원', ',' 제거하기
+          menu_arr.map((menu) => {
+            //공백 기준 자르기(배열)
+            let splited_space = menu.trim().split(/[\s~]+/g); // ' ', ~ 를 기준으로 자르기
+            // splited_space.splice(' ');
+            // console.log(splited_space)
+            // 가격에 '원'제거, ','제거
+            let removed_arr = splited_space.map((menu_2) => {
+              const renewalItem = menu_2
+                .trim()
+                .replace(/(\d{1,3})(?:,\d{3})*(?:원)?/g, (match, str) => {
+                  // console.log(match,str);
+                  const num = match.replace(",", "").replace("원", "");
+                  // console.log('num',num);
+                  return num;
+                });
+              return renewalItem.match(/\d/)
+                ? Number(renewalItem)
+                : renewalItem;
+            });
+            return removed_arr;
+          });
+        // console.log("renewaled_menu",renewaled_menu);
+        return { BZ_NM: item.BZ_NM, GNG_CS: item.GNG_CS, MNU: renewaled_menu };
+      });
+    </script>
+  </head>
+
+  <body>
+    <div class="show-block search-block">
+      <span style="font-size: 0.7rem"
+        >step-1 js에서 상호명선택 - 배열함수 forEach</span
+      >
+      <h1>상호명검색</h1>
+      <form name="form1" onsubmit="return false">
+        <div class="item">
+          <label>상호명 선택: </label>
+          <select class="select-restorant">
+            <option value=""></option>
+          </select>
+        </div>
+        <div>
+          <button>검색</button>
+        </div>
+      </form>
+    </div>
+
+    <div class="show-block order-input-block">
+      <span style="font-size: 0.7rem"
+        >step-2 상호명 선택시 활성화(object생성 및 저장 및 노드CRUD)</span
+      >
+      <h1>주문 입력</h1>
+      <form name="form2" onsubmit="return falses">
+        <div class="item">
+          <label>주문번호 : </label>
+          <input type="text" name="주문번호" />
+        </div>
+        <div class="item">
+          <label>상호명 : </label>
+          <input type="text" name="주문번호" />
+        </div>
+        <div class="item">
+          <label>메뉴명 : </label>
+          <input type="text" name="주문번호" />
+        </div>
+        <div class="item">
+          <label>가격 : </label>
+          <input type="text" name="주문번호" />
+        </div>
+        <div class="item">
+          <label>수량 : </label>
+          <input type="text" name="주문번호" />
+        </div>
+        <div>
+          <button>주문하기</button>
+        </div>
+      </form>
+    </div>
+
+    <hr />
+    <div class="show-block order-result-block">
+      <span style="font-size: 0.7rem"
+        >주문요청시 추가되는 항목들(object생성 및 저장 및 노드CRUD)</span
+      >
+      <h1>주문 확인</h1>
+      <div class="items">
+        <div class="item">
+          <label>주문번호 : </label>
+          <input type="text" name="주문번호" />
+        </div>
+        <div class="item">
+          <label>메뉴명 : </label>
+          <input type="text" name="주문번호" />
+        </div>
+        <div class="item">
+          <label>가격 : </label>
+          <input type="text" name="주문번호" />
+        </div>
+        <div class="item">
+          <label>수량 : </label>
+          <input type="text" name="주문번호" />
+        </div>
+        <div class="item">
+          <label>지불금액</label>
+          <input type="text" name="주문번호" />
+        </div>
+      </div>
+    </div>
+
+    <script>
+      // 사전작업
+
+      //---------------------------------------
+      // step-1 - 상호명 선택하기
+      // (RenewaledMenu안의 모든 상호명을 select이하 option으로 넣어보세요 - forEach사용해서 - )
+      //---------------------------------------
+      console.log("RenewaledMenu", RenewaledMenu);
+      //--------------------
+      // 예시
+      //--------------------
+      const selectRestorant = document.querySelector(".select-restorant"); // SelectNode탐색
+      // foreach로 먼저 표를 풀고, option 태그를 만들고, item의BZ_MN만 선택해 opNode에 넣고, opNode를 selectRestaurant에 넣는다.
+      RenewaledMenu.forEach((item) => {
+        // console.log(item);
+        const opNode = document.createElement("option"); // 새노드생성, 연결하는 것이 아닌 태그를 만드는 것.
+        opNode.innerHTML = item.BZ_NM; //option 내의 content에 내용저장(식당명)
+        selectRestorant.appendChild(opNode); //selectNode의 자식으로 붙이기
+      });
+
+      //
+
+      //
+
+      // step-2
+
+      //
+
+      // step-3
+
+      //
+
+      // 주문 리스트 아이템 추가하기
+      const addOrderItem = () => {};
+    </script>
+  </body>
+</html>

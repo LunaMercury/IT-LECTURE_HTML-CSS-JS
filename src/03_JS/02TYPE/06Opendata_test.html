@@ -122,8 +122,9 @@
         return (item = { OID: item.OID, TOTALPRICE: item.PRC * item.AMT });
       });
       console.log("TOTALPRICE :", TOTALPRICE);
+      console.log(`type ${TOTALPRICE.TOTALPRICE}`);
       TOTALPRICE.forEach((element) => {
-        return console.log("타입:", typeof TOTALPRICE.TOTALPRICE);
+        return console.log(`타입: ${typeof TOTALPRICE.TOTALPRICE}`);
       }); //? 타입 출력 어떻게 하는지 풀기
     </script>
   </body>

@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!DOCTYPE html>
+    <html lang="en">
+      <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>00INFO</title>
+      </head>
+
+      <body>
+        <div
+          class="box"
+          style="width: 100%; height: 50px; background-color: orange"
+        ></div>
+
+        <!-- 
+        산술 연산자 (Arithmetic Operators):
+
+        + (덧셈)
+        - (뺄셈)
+        * (곱셈)
+        / (나눗셈)
+        % (나머지) - 짝홀수 구분, 배수 구분, 끝자리수 확인, 수범위 제한
+        ++ (증가)
+        -- (감소)
+    -->
+        <script>
+          console.log("--------------산술 연산자---------------");
+          console.log(4 % 2 == 0 && "짝수");
+          console.log(5 % 2 == 0 && "짝수");
+          console.log(6 % 2 == 0 && "짝수");
+          console.log(7 % 2 == 0 && "짝수");
+
+          console.log(123456 % 100); // 끝의 두 자리를 나오게 할 수 있다.
+          console.log(parseInt(Math.random() * 100));
+          //   setInterval(() => {
+          //     console.log((parseInt(Math.random() * 100) % 44) + 1); // 비동기 처리 함수
+          //   }, 1000); //1000ms마다 한번씩 재생
+
+          console.log("--------------------------");
+          let n1 = 10;
+          n1 + 1;
+          console.log("+1", n1);
+          n1 = n1 + 1;
+          console.log("n1재정의", n1);
+          n1++; // 후치 연산자. 다른 연산처리를 먼저 한다.
+          console.log("n1++", n1);
+          ++n1; //전치 연산자. 이 연산처리를 우선한다.
+          console.log("++n1", n1);
+
+          let a = 10;
+          let b = 20;
+          let c = 30;
+          let d = a++ + ++b && ++c + a++;
+          console.log("a, b, c, d :", a, b, c, d);
+        </script>
+
+        <!--
+        할당 연산자 (Assignment Operators):
+        = (할당)
+        += (더해서 할당)
+        -= (빼서 할당)
+        *= (곱해서 할당)
+        /= (나눠서 할당)
+        %= (나머지를 할당)
+    -->
+
+        <!--
+    비교 연산자 (Comparison Operators):
+
+        == (동등 비교)
+        === (일치 비교)
+        != (부등 비교)
+        !== (불일치 비교)
+        > (크다)
+        < (작다)
+        >= (크거나 같다)
+        <= (작거나 같다)
+    -->
+
+        <script>
+          // == vs ===
+          console.log(
+            "-----------------할당, 비교 연산자----------------------"
+          );
+          console.log("1" + 2);
+          console.log("123" == 123);
+          console.log("123" === 123); //value와 자료형을 함께 일치여부 확인
+          console.log("----------------------------");
+        </script>
+
+        <!--
+    논리 연산자 (Logical Operators):
+
+    && (논리 AND)
+    || (논리 OR)
+    ! (논리 NOT)
+    비트 연산자 (Bitwise Operators):
+
+    & (비트 AND)
+    | (비트 OR)
+    ^ (비트 XOR)
+    ~ (비트 NOT)
+    << (왼쪽 시프트)
+    >> (오른쪽 시프트)
+    >>> (부호 없는 오른쪽 시프트)
+    -->
+        <script>
+          console.log("-----------------논리 연산자--------------------");
+          let m1 = 100;
+          let m2 = true;
+          let m3 = false;
+          let m4 = null;
+          let m5 = undefined;
+          let m6 = 0;
+
+          // && : AND연산자. 왼쪽 조건식의 수행결과가 true일때, 오른쪽 조건식을 실행.
+          console.log(true && true); //true
+          console.log(true && false); //false
+          console.log(false && true); //false
+          console.log(false && false); //false
+          console.log(m1 > 10 && m6 == 0);
+          console.log(m1 && "m1 안의 정수값은 true");
+          console.log(m4 && "m4 안의 정수값은 true"); //null은 기본 false이다.
+          console.log(!m5 && "m5 안의 정수값은 false"); //undefined은 기본 false이다. !는 결과를 반전.
+          console.log(m6 && "m5 안의 정수값은 false"); //undefined은 기본 false이다. !는 결과를 반전.
+
+          console.log("------------------------------------");
+          // || : OR연산자. 둘 중 하나만 참이면 됨. 즉 왼쪽이 참이면 오른쪽 연산을 처리하지 않음. 달리 말해 둘 중 하나의 연산만 처리함.
+          console.log(true || true); //true
+          console.log(true || false); //true
+          console.log(false || true); //true
+          console.log(false || false); //false
+          console.log(m1 > 10 || m6 == 0);
+          console.log(m1 || "m1 안의 정수값은 true");
+          console.log(m4 || "m4 안의 정수값은 false");
+          console.log(!m5 || "m5 안의 정수값은 false");
+          console.log(m6 || "m5 안의 정수값은 false");
+          console.log("------------------------------------");
+        </script>
+
+        <!--
+        삼항 조건 연산자 (Ternary Operator):
+        condition ? expression1 : expression2
+        타입 연산자 (typeof Operator):
+     -->
+        <script>
+          console.log("----------------삼항 연산자--------------------");
+          //   const data = prompt("값을 입력하시오");
+          //   // (조건식) ? 참일때 : 거짓일때
+          //   data > 10 ? console.log("10이상") : console.log("10이하");
+
+          console.log(window.innerWidth);
+          const boxE1 = document.querySelector(".box");
+          window.innerWidth < 600
+            ? (boxE1.style.backgroundColor = "green") &&
+              (boxE1.style.height = "100px")
+            : console.log("큼");
+        </script>
+
+        <!--
+        typeof (피연산자의 타입을 문자열로 반환)
+        인스턴스 검사 연산자 (instanceof Operator):
+    -->
+      </body>
+    </html>
+  </body>
+</html>

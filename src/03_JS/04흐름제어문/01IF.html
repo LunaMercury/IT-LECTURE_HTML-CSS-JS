@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>01IF</title>
+  </head>
+  <body>
+    <div class="box" style="width: 20%; height: 50px; background-color: orange">
+      TEXT
+    </div>
+    <script>
+      const boxE1 = document.querySelector(".box");
+      // if(조건식){종속문장}
+      let box_style = prompt(
+        "기본 스타일을 입력하세요\n( ';' 단위로 '가로/세로'여부, width, height, color, background-color)"
+      );
+      const style_arr = box_style.split(";");
+      if (style_arr[0] == "가로") {
+        console.log("가로스타일");
+        boxE1.setAttribute(
+          "style",
+          `width:${style_arr[1]};height:${style_arr[2]};color:${style_arr[3]};background-color:${style_arr[4]}`
+        );
+      } else {
+        console.log("세로스타일");
+        boxE1.setAttribute(
+          "style",
+          `width:${style_arr[2]};height:${style_arr[1]};color:${style_arr[3]};background-color:${style_arr[4]}`
+        );
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>09Prototype상속</title>
+  </head>
+  <body>
+    <script>
+      // 상위 프로토타입 함수
+      function Animal(name) {
+        console.log("Animal 생성자 호출");
+        this.name = name; // name 속성추가
+      }
+      // 상위 프로토타입에 기능 추가
+      Animal.prototype.getName = function () {
+        console.log(`my name is ${this.name}`);
+      };
+      // 이로 인해 Animal은 name의 속성이 있고, getName 기능이 있다.
+      // ------------------------------------------------------------
+
+      // 프로토타입 간 상속. 아래는 상속관계 명시
+      Dog.prototype = Object.create(Animal.prototype);
+      포메라니안.prototype = Object.create(Dog.prototype);
+
+      // 하위 프로토타입 함수
+      function Dog(name, kind) {
+        //call. 상위 프로토타입 생성자 호출. 이로인해 Dog도 getName을 사용할 수 있다.
+        Animal.call(this, name); // this는 객체주소. 없으면 name 속성이 안불러와진다.
+        console.log("Dog 생성자 호출");
+        this.kind = kind;
+        // 아래와 같이 function 안에 기능 넣어도 되는듯
+        Dog.prototype.getKind = function () {
+          console.log(`이 품종은 ${this.kind} 입니다.`);
+        };
+      }
+      function 포메라니안(name, kind, color) {
+        Dog.call(this, name, kind);
+        console.log("포메라니안 생성자 호출");
+        this.color = color;
+      }
+
+      //Dog 객체 생성
+      const dog1 = new Dog("poppy", "골든리트리버");
+
+      console.log(dog1);
+      dog1.getName(); // Animal에서 상속받음으로서 getName을 사용할 수 있다.
+      console.log("--------------------------------");
+
+      // 포메라니안 객체 생성
+      const dog2 = new 포메라니안("니모", "포메라니안", "white");
+
+      console.log(dog2);
+      dog2.getName();
+      dog2.getKind();
+    </script>
+  </body>
+</html>

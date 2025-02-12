@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>02FOR</title>
+  </head>
+  <body>
+    <script>
+      // 반복문 : 조건식이 참인 동안에 반복실행되도록 허용된 문법
+
+      // while(조건식){참인동안 실행되는 종속문장}
+      // while에는 무한루프에 빠지지 않도록 탈출연산식이 필요하다.
+      //   let i = 0; // 반복 탈출용 변수
+      //   while (i < 5) {
+      //     // (i <= 5) : 반복을 벗어나게 하기 위한 탈출용 조건식
+      //     i++; // 반복 탈출을 위한 연산
+      //     alert(`루프, ${i}`); // 동기 처리함수
+      //     console.log(i);
+      //   }
+
+      // for(초기값; 조건식; 연산식) {참인동안 실행되는 종속문장}
+      for (i = 0; i <= 5; i++) {
+        alert(`루프, ${i}`); // 동기 처리함수
+        console.log(i);
+      }
+    </script>
+  </body>
+</html>
