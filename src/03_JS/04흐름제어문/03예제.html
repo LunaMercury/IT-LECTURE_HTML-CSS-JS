@@ -1,0 +1,184 @@
+<!-- 메인메뉴, 서브메뉴, 가로세로 입력하면 나타나게 -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>03예제</title>
+    <style>
+      body {
+        margin: 0;
+      }
+      nav {
+        height: 80px;
+        border: 1px solid;
+      }
+      nav > .main-menu {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        width: 100%;
+      }
+      nav > .main-menu > li {
+        background-color: orange;
+        color: white;
+        text-align: center;
+        border: 1px solid;
+        min-width: 120px;
+        max-width: 150px;
+        width: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <div class="top-header"></div>
+        <nav>
+          <ul class="main-menu"></ul>
+        </nav>
+      </header>
+      <footer>
+        <!-- onsubmit="return false" 은 서버로 내용을 전달하지 않는다. 내부적으로 처리할때 사용  -->
+        <form name="navForm" onsubmit="return false">
+          <input name="menuname" type="text" value="" />
+          <a href="javascript:void(0)" class="nav-main-btn"
+            >Nav-메인메뉴 만들기</a
+          >
+        </form>
+
+        <form name="setViewForm" onsubmit="return false">
+          <select name="setViewMode" id="">
+            <option value="mobile">모바일</option>
+            <option value="desktop">데스크탑</option>
+          </select>
+          <a href="javascript:void(0)" class="view-mode-btn">가로형/세로형</a>
+        </form>
+
+        <form name="submenuForm" onsubmit="return false">
+          <input
+            name="mainname"
+            type="text"
+            placeholder="메인 메뉴명을 입력하세요"
+            value=""
+          />
+          <input
+            name="subname"
+            type="text"
+            placeholder="서브 메뉴명을 입력하세요(띄어쓰기)"
+            value=""
+          />
+          <a href="javascript:void(0)" class="sub-menu-btn"
+            >NAV-서브메뉴 만들기</a
+          >
+        </form>
+      </footer>
+    </div>
+    <script>
+      const mainMenuE1 = document.querySelector(".main-menu");
+      // 프롬프트로 정보받기
+      //   const settings = prompt(`nav 메뉴를 입력하세요. 띄어쓰기로 구분합니다.`);
+      // console.log(menuArr);
+      // 밑에 for 문 while 밖으로 꺼내서 사용해야됨
+      //--------------------------------------------------------------
+      // form 으로 정보받기
+      const navBtn = document.querySelector(".nav-main-btn");
+      navBtn.addEventListener("click", () => {
+        const form = document.navForm; // 여기서는 필요 없지만, input이 여러 개일때 동시에 서버로 보내기 위해. 습관화.
+        const settings = form.menuname.value; //form 안의 menuname 안의 value와 연동
+        const menuArr = settings.split(" "); // 띄어쓰기 별로 구분
+        console.log("메인메뉴 만들기 :", menuArr);
+        // 기존 자식 노드(li) 제거
+        // firstchild를 지우고 다시 돌아가면 2번째가 first가 된다. 이를 계속 반복하면 결국 firstchild가 없어지므로 false가 된다.
+        while (mainMenuE1.firstChild) {
+          mainMenuE1.removeChild(mainMenuE1.firstChild);
+        }
+
+        // 새로운 자식 노드(li) 추가
+
+        // ------------for 문 사용----------
+        // for (let i = 0; i < menuArr.length; i++) {
+        //   //요소 생성
+        //   const liE1 = document.createElement("li");
+        //   liE1.innerHTML = menuArr[i];
+        //   mainMenuE1.appendChild(liE1);
+        // }
+
+        // ------------forEach 사용---------------------
+        menuArr.forEach((item) => {
+          const liE1 = document.createElement("li"); //li 태그 생성
+          const aE1 = document.createElement("a"); // 메뉴를 클릭할 수 있게
+          aE1.setAttribute("href", "javascript:void(0)");
+          aE1.innerHTML = item;
+
+          liE1.appendChild(aE1);
+
+          mainMenuE1.appendChild(liE1);
+        });
+      });
+
+      // View Mode Button
+      const viewModeBtnE1 = document.querySelector(".view-mode-btn");
+      viewModeBtnE1.addEventListener("click", () => {
+        const form = document.setViewForm;
+        const modeOption = form.setViewMode.value;
+
+        const wrapperE1 = document.querySelector(".wrapper");
+        if (modeOption === "mobile") {
+          // 모바일 화면
+          console.log("가로형/세로형:", modeOption);
+          wrapperE1.style.width = "380px";
+          wrapperE1.style.margin = "0 auto";
+        } else if (modeOption === "desktop") {
+          // 데스크탑 화면
+          console.log("가로형/세로형:", modeOption);
+          wrapperE1.style.width = "100%";
+          wrapperE1.style.margin = "0 auto";
+        }
+      });
+
+      // 서브메뉴 만들기
+      const subMenuBtnE1 = document.querySelector(".sub-menu-btn");
+      subMenuBtnE1.addEventListener("click", () => {
+        const form = document.submenuForm;
+        const mainname = form.mainname.value;
+        const subname = form.subname.value;
+        console.log("mainname, subname", mainname, subname);
+
+        // 메인메뉴 찾기
+        const mainmenuLiE1s = document.querySelectorAll(".main-menu>li>a"); //.main-menu>li>a 내용을 전부 다 가져오기
+        console.log("메인메뉴 리스트", mainmenuLiE1s);
+
+        mainmenuLiE1s.forEach((element) => {
+          if (element.textContent.trim() === mainname) {
+            console.log("find!", element);
+            const liE1 = element.parentNode;
+            console.log("parentNode :", liE1);
+
+            // 서브메뉴 만들기
+            const submenuArr = subname.split(" ");
+            // ul생성, li생성, a생성 - 연결
+            const ulE1 = document.createElement("ul");
+            ulE1.classList.add("sub-menu"); // ul에 sub-menu라는 클래스를 적용
+            submenuArr.forEach((element) => {
+              const newLi = document.createElement("li");
+              const newA = document.createElement("a");
+              newA.setAttribute("href", "javascript:void(0)");
+              newA.innerHTML = element;
+
+              newLi.appendChild(newA);
+              ulE1.appendChild(newLi);
+            });
+
+            liE1.appendChild(ulE1);
+          }
+        });
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>03Scope</title>
+  </head>
+  <body>
+    <script>
+      //   스코프란, 변수나 함수가 접근할 수 있는 범위
+      //   전역 스코프(Global Scope)와 지역 스코프(Local Scope)로 구별
+
+      //   전역 스코프 : 모든 지역에서 접근이 가능
+
+      //   지역 스코프 : 특정 영역({})에서만 접근 가능
+      //   - 함수 스코프 : 함수 내에서 선언된 변수는 해당 함수 내에서만 접근 가능
+      //   - 블록 스코프 : 블록 내부에서만 접근 가능(if, for, while...)
+      //   - 랙시컬(Lexical) 스코프 : 변수를 선언한 위치에 따라서 스코프 결정
+
+      //   // 전역 스코프
+      //   var g_val = "전역변수 확인!";
+
+      //   function a() {
+      //     console.log("a func", g_val);
+      //   }
+      //   a();
+      //   if (1) {
+      //     console.log("if", g_val);
+      //   }
+      //   console.log({ key1: g_val });
+
+      //   // 함수 스코프
+      //   f1();
+      //   f2();
+      //   function f1() {
+      //     var f1_v = "f1_var";
+      //     console.log("f1_v :", f1_v);
+      //   }
+      //   function f2() {
+      //     var f2_v = "f2_var";
+      //     console.log("f2_v :", f2_v);
+      //   }
+      //   console.log(f1_v);
+      //   console.log(f2_v);
+
+      //   // 블록 스코프 내의 지역변수 - let, const(상수)
+      //   if (true) {
+      //     let v_1 = "블럭 내에 사용되는 지역변수";
+      //     console.log("v_1:", v_1);
+      //     var v_2 = "블럭 내에 사용한 var변수";
+      //   }
+      //   console.log(v_2); // 블록 바깥으로 나가도 존재한다. 이로인해 var은 쓰지 않는 것이 좋다.
+      //   console.log(v_1);
+
+      //   // 랙시컬 스코프(화살표 함수) 확인 - this
+      //   const f1 = () => {
+      //     console.log("f1..", this); //상위 스코프(window객체)의 'this'를 가져옴
+      //   };
+      //   f1();
+      // 랙시컬 스코프(Object내의 기능에서의) 확인 - this
+      const person = {
+        name: "홍길동",
+        age: 15,
+        addr: "대구",
+        getName: function () {
+          // 상위 스코프는 person이다.
+          console.log("이름 :", this.name);
+        },
+        getAge: () => {
+          // 상위 스코프는 window이다.
+          console.log("나이 :", this.age);
+        },
+      };
+      console.log("person :", person);
+      person.getName(); // 상위 스코프가 person이라서 "홍길동"이 나온다.
+      person.getAge(); //상위 스코프가 window라서 undefined가 나온다.
+    </script>
+  </body>
+</html>

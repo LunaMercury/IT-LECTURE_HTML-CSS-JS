@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>02Hoisting</title>
+  </head>
+  <body>
+    <script>
+      // 호이스팅
+      // 변수와 함수의 선언이 코드 실행전에 메모리에 미리 저장되는 현상
+      // function 예약어 사용시 호이스팅 처리됨
+      // var 예약어 사용시 호이스팅 처리됨
+
+      //   // 다음 라인에서 a는 정의되지 않았지만, var로 인해 undefined 결과가 나온다
+      //   console.log("a", a);
+      //   var a = 10;
+      //   console.log("a", a);
+
+      //   // let은 호이스팅 처리가 되지 않으므로 오류가 발생한다.
+      //   console.log("b", b);
+      //   let b = 20;
+      //   console.log("b", b);
+
+      // -------------------------------
+      // 함수 호이스팅 확인
+      // -------------------------------
+
+      hello1();
+      function hello1() {
+        console.log("hello world");
+      }
+
+      hello2();
+      const hello2 = () => {
+        console.log("hello world");
+      };
+
+      // var 변수는 사용하지 않는것이 좋다.
+      // function은 목적에 따라 사용여부 결정(처음에 만든 효과를 주고싶으면 사용)
+      // function은 기본적으로 이름부여도 가능하다.(익명함수 or 이름부여된 함수 선택가능)
+      // 화살표 함수는 기본적으로 익명함수로 처리된다.
+    </script>
+  </body>
+</html>

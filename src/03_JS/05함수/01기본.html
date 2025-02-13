@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>01기본</title>
+  </head>
+  <body>
+    <script>
+      // 기본형태(ECMA 6 이전)
+      // 인자 o 리턴 o
+      function sum1(n1, n2) {
+        return n1 + n2;
+      }
+      // 인자 o 리턴 x
+      function sum2(n1, n2) {
+        console.log(n1 + n2);
+      }
+      // 인자 x 리턴 o
+      function sum3() {
+        const n1 = 10;
+        const n2 = 20;
+        return n1 + n2;
+      }
+      // 인자 x 리턴 x
+      function sum4() {
+        const n1 = 10;
+        const n2 = 20;
+      }
+
+      const v1 = sum1(10, 20);
+      console.log("v1:", v1);
+      const v2 = sum2(100, 200);
+      console.log("v2:", v2);
+      const v3 = sum3();
+      console.log("v3:", v3);
+      console.log("v4:", sum4());
+
+      // --------------------------------
+      // 기본형태(ECMA 6 이후)
+      const f1 = (n1, n2) => {
+        return n1 + n2;
+      };
+      const f2 = (n1, n2) => {
+        console.log(n1 + n2);
+      };
+      const f3 = () => {
+        const n1 = 10;
+        const n2 = 20;
+        return n1 + n2;
+      };
+      const f4 = () => {
+        const n1 = 10;
+        const n2 = 20;
+        console.log("f4:", n1 + n2);
+      };
+
+      const w1 = f1(10, 20);
+      console.log("w1", w1);
+      const w2 = f2(10, 20);
+      console.log("w2", w2);
+      const w3 = f3();
+      console.log("w3", w3);
+      const w4 = f4();
+      console.log("w4", w4);
+
+      // 인자의 개수는 메모리 허용범위 내에서 무제한
+      // 반환값의 개수는 1개
+
+      const f5 = (m1, m2, m3) => {
+        return {
+          // 속성
+          arg1: m1,
+          arg2: m2,
+          arg3: m3,
+          // 기능
+          toString: function () {
+            console.log(
+              `이름:${this.arg1}, 나이:${this.arg2}, 주소:${this.arg3}`
+            );
+          },
+        };
+      };
+      const w5 = f5("홍길동", 15, "대구");
+      console.log("w5", w5);
+      w5.toString();
+
+      //가변인자(...args)
+      const f6 = (n1, n2, n3, ...args) => {
+        console.log("n1", n1);
+        console.log("n2", n2);
+        console.log("n3", n3);
+        console.log("args", args);
+      };
+      f6(100, 200, 300, 400, 500, 600, 700, 800);
+    </script>
+  </body>
+</html>
