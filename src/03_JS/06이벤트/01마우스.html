@@ -1,0 +1,85 @@
+<!-- 네모박스 클릭했을 때 마우스 클릭 횟수  -->
+<!-- 마우스 진입, 탈출, 클릭 더블클릭 등 체크 -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>01마우스</title>
+    <style>
+      div {
+        width: 300px;
+        height: 200px;
+        border: 1px solid;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="d1"></div>
+    <hr />
+    <div class="d2"></div>
+    <hr />
+    <div class="d3"></div>
+
+    <script>
+      const d1E1 = document.querySelector(".d1");
+      var cnt = 0;
+      d1E1.addEventListener("click", (e) => {
+        console.log("clicked", e.target);
+        cnt++;
+        d1E1.innerHTML = `<h1>${cnt}</h1>`;
+      });
+
+      // 클로저 이용 상태관리
+      function clickHandler() {
+        let cnt = 0;
+        function addCnt1(node) {
+          cnt++;
+          node.innerHTML = `<h2>클로저 내1 ${cnt}</h2>`;
+          console.log("클로저 클릭1 : ", cnt);
+        }
+        function addCnt2(node) {
+          cnt++;
+          node.innerHTML = `<h2>클로저 내2 ${cnt}</h2>`;
+          console.log("클로저 클릭2 : ", cnt);
+        }
+        return { addCnt1, addCnt2 };
+      }
+      const addCnt1 = clickHandler().addCnt1;
+      const addCnt2 = clickHandler().addCnt2;
+      const d2E1 = document.querySelector(".d2");
+      d2E1.addEventListener("click", () => {
+        addCnt1(d2E1); //d2E1 입력 이유는 쿼리셀렉터와 별개로 clickHandler에 넣을 변수를 입력해줘야 해서
+        // 즉 d2E1 대신 d3E1을 입력하면 d3 div 에 영향을 주게 만들 수 있음.
+      });
+
+      // mouseEnter : 마우스 진입
+      // mouseOver : 마우스 머무를때
+      // mouseLeave : 마우스 나갈때
+      // click : 마우스 클릭
+      // dbclick : 더블클릭
+      // contextmenu : 마우스 우클릭
+      const d3E1 = document.querySelector(".d3");
+      d3E1.addEventListener("mouseenter", () => {
+        d3E1.innerHTML = `<h2>Mouse_Enter<h2>`;
+      });
+      d3E1.addEventListener("mouseover", () => {
+        // enter와 leave가 우선순위라 적용이 잘 안된다.
+        d3E1.innerHTML = `<h2>Mouse_Over<h2>`;
+      });
+      d3E1.addEventListener("mouseleave", () => {
+        d3E1.innerHTML = `<h2>Mouse_Leave<h2>`;
+      });
+      d3E1.addEventListener("click", () => {
+        d3E1.innerHTML = `<h2>Mouse_Click<h2>`;
+      });
+      d3E1.addEventListener("dblclick", () => {
+        d3E1.innerHTML = `<h2>Mouse_DoubleClick<h2>`;
+      });
+      d3E1.addEventListener("contextmenu", (e) => {
+        d3E1.innerHTML = `<h2>Contextmenu<h2>`;
+        e.preventDefault(); // 마우스 우클릭 방지
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>05CallBack</title>
+  </head>
+  <body>
+    <script>
+      // 콜백 함수란, 함수를 호출하는 시점이 바뀌어진 형태의 함수
+      // 기존방식 : 사용자가 함수를 직접 정의 -> 정의된 함수를 호출하여 결과를 반환받는 방식
+      // Call Back : 콜백함수에 {인자로 로직이 담긴 함수(함수주소)}를 전달하여 콜백함수로부터 처리된 결과를 반환받는 방식
+
+      //   // 일반 함수
+      //   function func(n1, n2) {
+      //     console.log("func(n1, n2) called..");
+      //     return n1 + n2;
+      //   }
+      //   const v1 = func(3, 5);
+      //   console.log("v1 :", v1);
+      //   console.log("---------------------------------");
+
+      //   // 콜백 함수
+      //   function callBackFunc(n1, n2, logic) {
+      //     console.log("CallBackFunc start");
+      //     const v = logic(n1, n2);
+      //     console.log("v : ", v);
+      //     console.log("callBackFunc");
+      //   }
+
+      //   // 콜백 함수 사용
+      //   callBackFunc(100, 200, func);
+
+      // 콜백 함수로 map 만들기
+
+      function customMap(array, func) {
+        let tmp = [];
+        for (let i = 0; i < array.length; i++) {
+          const item = array[i];
+          const reNewItem = func(item);
+          tmp.push(reNewItem);
+        }
+        return tmp;
+      }
+      arr = [
+        { id: 1111, name: "홍길동", age: 15, addr: "대구" },
+        { id: 2222, name: "티모", age: 555, addr: "인천" },
+        { id: 3333, name: "랭가", age: 44, addr: "울산" },
+        { id: 4444, name: "다리우스", age: 77, addr: "구미" },
+      ];
+      const r_val = customMap(arr, (item) => {
+        return { id: item.id, name: item.name };
+      });
+      console.log("r_val:", r_val);
+
+      const r_val2 = customMap(arr, (item) => {
+        return { name: item.name, addr: item.addr };
+      });
+      console.log("r_val2:", r_val2);
+
+      function func_age(item) {
+        console.log("func_age 실행");
+        return { id: item.id, age: item.age };
+      }
+
+      const r_age = customMap(arr, func_age);
+      console.log("func_age 결과 : ", r_age);
+
+      // CallBack + Closure
+      function callBackFunc3(arr) {
+        // inner function
+        function map1(logic) {
+          let tmp = []; // state
+          console.log("map1호출");
+          for (let i = 0; i < arr.length; i++) {
+            const item = arr[i];
+            const reNewItem = logic(item);
+            tmp.push(reNewItem);
+            console.log("결과:", i, reNewItem);
+          }
+          console.log("temp 값 :", tmp);
+          return tmp;
+        }
+        function map2(logic) {
+          let tmp = []; // state
+          console.log("map2호출");
+          for (let i = 0; i < arr.length; i++) {
+            const item = arr[i];
+            const reNewItem = logic(item);
+            tmp.push(reNewItem);
+            console.log("결과:", i, reNewItem);
+          }
+          console.log("temp 값 :", tmp);
+          return tmp;
+        }
+        function map3(logic) {
+          let tmp = []; // state
+          console.log("map3호출");
+          for (let i = 0; i < arr.length; i++) {
+            const item = arr[i];
+            const reNewItem = logic(item);
+            tmp.push(reNewItem);
+            console.log("결과:", i, reNewItem);
+          }
+          console.log("temp 값 :", tmp);
+          return tmp;
+        }
+        return { map1, map2, map3 };
+      }
+
+      const r_val3 = callBackFunc3(arr).map1((item) => {
+        return { 아이디: item.id, 나이: item.age };
+      });
+      console.log("r_val3 :", r_val3);
+
+      // 정렬
+      //Sort(선택정렬)
+      function callback3(array, func) {
+        let tmp = 0; //임시저장
+        for (i = 0; i < array.length - 1; i++) {
+          for (j = i + 1; j < array.length; j++) {
+            if (func(array[j], array[i]) <= 0) {
+              tmp = array[i];
+              array[i] = array[j];
+              array[j] = tmp;
+            }
+          }
+        }
+      }
+      arr2 = [10, 2, 4, 5, 1, 3, 7, 6];
+
+      callback3(arr2, (a, b) => {
+        return a - b;
+      });
+      console.log(arr2);
+
+      function callback4(array) {
+        let tmp = 0; //임시저장
+
+        function sort(func) {
+          for (i = 0; i < array.length - 1; i++) {
+            for (j = i + 1; j < array.length; j++) {
+              if (func(array[j], array[i]) <= 0) {
+                tmp = array[i];
+                array[i] = array[j];
+                array[j] = tmp;
+              }
+            }
+          }
+        }
+        return { sort: sort };
+      }
+      arr3 = [4, 2, 12, 5, 4, 7];
+      callback4(arr3).sort((a, b) => a - b);
+      console.log(arr3);
+
+      // 필터 만들기(Callback + closure)
+      //   해보기---------------------
+    </script>
+  </body>
+</html>
