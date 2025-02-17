@@ -1,5 +1,7 @@
 <!-- 네모박스 클릭했을 때 마우스 클릭 횟수  -->
 <!-- 마우스 진입, 탈출, 클릭 더블클릭 등 체크 -->
+
+<!-- 파일 드롭 시 액션 -->
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -7,10 +9,62 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>01마우스</title>
     <style>
-      div {
+      .d1,
+      .d2,
+      .d3 {
         width: 300px;
         height: 200px;
         border: 1px solid;
+      }
+      .d4 {
+        width: 500px;
+        height: 500px;
+        padding: 10px;
+        margin: 10px;
+        border: 5px dashed gray;
+        color: gray;
+
+        position: relative;
+      }
+      .d4::after {
+        content: "+";
+        font-size: 7rem;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        width: 100%;
+        height: 100%;
+      }
+      .drag-block {
+        display: flex;
+        justify-content: start;
+        align-items: center;
+        width: 100%;
+        height: 100%;
+      }
+      .preview {
+        width: 150px;
+        height: 500px;
+        border: 1px solid;
+        margin: 10px;
+        padding: 10px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        /* 오버플로우y로, 스크롤이 생길 수 있도록 */
+        overflow-y: auto;
+        overflow-x: hidden;
+      }
+      .preview::-webkit-scrollbar {
+        /* 스크롤은 동작하지만, 스크롤 바는 나타나지 않는다. */
+        display: none;
       }
     </style>
   </head>
@@ -20,6 +74,11 @@
     <div class="d2"></div>
     <hr />
     <div class="d3"></div>
+    <hr />
+    <div class="drag-block">
+      <div class="d4"></div>
+      <div class="preview"></div>
+    </div>
 
     <script>
       const d1E1 = document.querySelector(".d1");
@@ -79,6 +138,80 @@
       d3E1.addEventListener("contextmenu", (e) => {
         d3E1.innerHTML = `<h2>Contextmenu<h2>`;
         e.preventDefault(); // 마우스 우클릭 방지
+      });
+      // 드래그 앤 드랍 이벤트
+      // dragstart  : 드래그 시작
+      // drag       : 드래그중
+      // dragenter  : 드래그가 대상 영역 위로 이동시(요소가 드랍의 대상이 될 때), 대상물에 이벤트 처리
+      // dragover   : 드래그가 대상 영역 위에 있는 동안(요소가 드랍의 대상이 될 때), 대상물에 이벤트 처리
+      // dragleave  : 드래그가 대상 영역에서 벗어남(요소가 드랍의 대상이 될 때), 대상물에 이벤트 처리
+      // dragend    : 드래그 종료
+      // drop       : 드랍처리(마우스를 뗌, 데이터를 가져와 처리)
+
+      const maxSize = 1024 * 1024 * 1; // 최대 업로드 가능 사이즈
+      function isValid(file) {
+        // 유효성 체크 함수
+        if (!file.type.startsWith("image/")) {
+          // 이미지 파일인지
+          alert("이미지 파일만 업로드 가능합니다.");
+          return false;
+        } else if (file.size >= maxSize) {
+          // 사이즈가 maxSize를 초과하는지
+          alert("파일 사이즈는 최대 1MB 입니다.");
+          return false;
+        } else {
+          return true;
+        }
+      }
+      // e.preventDefault() : 크롬 기본 기능 끄기
+      const d4E1 = document.querySelector(".d4");
+      d4E1.addEventListener("dragenter", (e) => {
+        console.log("dragenter", e);
+        e.preventDefault();
+      });
+      d4E1.addEventListener("dragover", (e) => {
+        d4E1.style.border = "5px dashed lightgray";
+        d4E1.style.color = "lightgray";
+        e.preventDefault();
+        // console.log("dragover", e.target);
+      });
+      d4E1.addEventListener("dragleave", (e) => {
+        e.preventDefault();
+        d4E1.style.border = "5px dashed gray";
+        d4E1.style.color = "gray";
+      });
+      d4E1.addEventListener("dragend", (e) => {
+        console.log("dragend", e);
+        e.preventDefault();
+      });
+      d4E1.addEventListener("drop", (e) => {
+        e.preventDefault();
+        d4E1.style.border = "5px dashed gray";
+        d4E1.style.color = "gray";
+        console.log("drop.e", e);
+        console.log("drop.target", e.target); // 드랍이 들어가는 곳
+        console.log("drop.dataTransfer", e.dataTransfer);
+        console.log("drop.dataTransfer.files", e.dataTransfer.files);
+        const files = e.dataTransfer.files;
+        for (let i = 0; i < files.length; i++) {
+          console.log(`drop.dataTransfer.files ${i}`, e.dataTransfer.files[i]); // 파일 정보. [0]은 여러 개의 파일을 동시에 업로드 시 첫 번째만 로그에 보이게 하려고
+          const file = e.dataTransfer.files[i];
+
+          //왜 !를 쓰는지 모르겠음
+          if (!isValid(file)) {
+            return;
+          }
+          // 미리보기로 이미지 보여주기
+
+          const previewE1 = document.querySelector(".preview");
+          const newImgE1 = document.createElement("img");
+          newImgE1.src = URL.createObjectURL(file); //파일 정보 입력
+          newImgE1.setAttribute(
+            "style",
+            "width:100%;height:100%;object-fit:contain;"
+          ); //새 노드를 생성하면 .style를 적용할 수 없다.
+          previewE1.prepend(newImgE1); //prepend는 위에 붙이는것. append는 아래에 붙이는 것
+        }
       });
     </script>
   </body>
