@@ -134,9 +134,9 @@
       // 아이템 드래그 & 드랍
       const liE1s = document.querySelectorAll(".items li"); //아이템 안의 모든 li를 꺼내는 작업
       let dragedNode = null;
+      // selectAll 썼으므로 foreach 사용해야한다
       liE1s.forEach((element) => {
         element.addEventListener("dragstart", (e) => {
-          console.log("dragstart", e.target);
           dragedNode = e.target;
           console.log("dragdNode", dragedNode);
         });
@@ -154,7 +154,7 @@
         // console.log("drop", e);
         console.log("offsetXY :", e.offsetX, e.offsetY);
 
-        //div 만들고
+        //div 만들고(newDivE1 자주 써서 전역변수로 설정.)
         newDivE1.classList.add("item"); // 위 div에 item 클래스 지정하고
         newDivE1.setAttribute(
           // 마우스 XY값에 설치되게 absolute의 위치에 만들게 되고

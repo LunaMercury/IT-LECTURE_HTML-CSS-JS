@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      td {
+        width: 50px;
+        height: 50px;
+        border: 1px solid gray;
+      }
+      input {
+        width: 90%;
+        height: 100%;
+        outline: none;
+        border: 0px;
+      }
+    </style>
+  </head>
+  <body>
+    <input id="rownum" placeholder="행의개수입력" style="width: 200px" />
+    <input id="colnum" placeholder="열의개수입력" style="width: 200px" />
+    <button onclick="">생성</button>
+
+    <hr />
+    <table id="tbl">
+      <tbody></tbody>
+    </table>
+    <script>
+      // tr은 밑으로, td는 옆으로. tr:부모, td:자식
+
+      let curX = 0;
+      let curY = 0;
+      let selectedNode = 0;
+
+      // 참조자
+      const rownumEl = document.querySelector("#rownum");
+      const colnumEl = document.querySelector("#colnum");
+      const 생성btnEl = document.querySelector("button");
+      const tblEl = document.querySelector("#tbl tbody");
+
+      // 행렬 생성-------------------------------
+      생성btnEl.addEventListener("click", () => {
+        tblEl.innerHTML = "";
+        tr_val = rownumEl.value;
+        td_val = colnumEl.value;
+        console.log(tr_val, td_val);
+
+        for (i = 0; i < tr_val; i++) {
+          const trEl = document.createElement("tr");
+          tblEl.appendChild(trEl);
+          for (j = 0; j < td_val; j++) {
+            // i와 j 이렇게 따로 줘야 하는듯
+            const tdEl = document.createElement("td");
+            tdEl.innerHTML = `${i}, ${j}`;
+            tdEl.setAttribute("id", `${i}|${j}`); // 각 박스마다 id 주기
+            trEl.appendChild(tdEl);
+          }
+        }
+
+        // 숫자 넣기----------------------------
+
+        // 색깔 넣기-----------------------------
+
+        // 기본 cur 위치
+        curX = Math.ceil(tr_val / 2 - 1);
+        curY = Math.ceil(td_val / 2 - 1);
+        // 초기 선택된 위치 스타일링
+        function selectedStyle(xPos, yPos) {
+          const selectedEl = document.getElementById(`${xPos}|${yPos}`);
+          selectedEl.style.backgroundColor = "grey";
+        }
+        selectedStyle(curX, curY);
+      });
+      // 마우스 클릭 시 색깔 변환-----------------
+
+      tblEl.addEventListener("click", (e) => {
+        // 색 리셋
+        let tblcolorclean = document.querySelectorAll("#tbl tbody tr td");
+        tblcolorclean.forEach((element) => {
+          element.style.backgroundColor = "";
+        });
+        console.log("타겟 id :", e.target.id);
+
+        function selectedStyle(e) {
+          const selectedEl = document.getElementById(e.target.id);
+          selectedEl.style.backgroundColor = "red";
+          console.log(selectedEl);
+        }
+        selectedStyle(e);
+      });
+
+      // 키보드로 색깔 이동------------------------
+      // const keypressE1 = document.querySelector("#input3");
+      // const p3E1 = document.querySelector("#p3");
+      // keypressE1.addEventListener("keypress", () => {});
+    </script>
+  </body>
+</html>

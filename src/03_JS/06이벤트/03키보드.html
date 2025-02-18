@@ -1,0 +1,56 @@
+<!-- 키보드 누르고 뗄때 등. 게임할때 키 확인 -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>03키보드</title>
+  </head>
+  <body>
+    KEYUP : <input id="input1" type="text" /><br />
+    <p id="p1"></p>
+    <hr />
+    KEYDOWN : <input id="input2" type="text" /><br />
+    <p id="p2"></p>
+    <hr />
+    KEYPRESS : <input id="input3" type="text" /><br />
+    <p id="p3"></p>
+    <hr />
+
+    <script>
+      // 아스키코드 한글문자는 인식 이상하게 됨.(e.keyCode)
+
+      // KEYUP    : 키보드가 올라올 때
+      const keyupE1 = document.querySelector("#input1"); // 인풋 안의 내용
+      const p1E1 = document.querySelector("#p1"); // 인풋 밑의 p태그
+      keyupE1.addEventListener("keyup", (e) => {
+        console.log("up.e", e);
+        console.log("up.e.key", e.key);
+        console.log("up.e.keycode", e.keyCode);
+        p1E1.innerHTML = e.key + " " + e.keyCode;
+      });
+
+      // KEYDOWN  : 키보드가 내려갈 때
+      const keydownE1 = document.querySelector("#input2");
+      const p2E1 = document.querySelector("#p2");
+      keydownE1.addEventListener("keydown", (e) => {
+        console.log("down.e", e);
+        console.log("down.e.key", e.key);
+        console.log("down.e.keycode", e.keyCode);
+        p2E1.innerHTML = e.key + " " + e.keyCode;
+      });
+
+      // KEYPRESS : 키보드를 계속 누를 때
+      // 쉬프트나 방향키 등 문자입력이 없는 것은 인식 안됨
+      // 한글문자는 인식 아예 안됨
+      const keypressE1 = document.querySelector("#input3");
+      const p3E1 = document.querySelector("#p3");
+      keypressE1.addEventListener("keypress", (e) => {
+        console.log("press.e", e);
+        console.log("press.e.key", e.key);
+        console.log("press.e.keycode", e.keyCode);
+        p3E1.innerHTML = e.key + " " + e.keyCode;
+      });
+    </script>
+  </body>
+</html>

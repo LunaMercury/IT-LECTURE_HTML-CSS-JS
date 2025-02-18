@@ -1,0 +1,70 @@
+<!-- 창 사이즈 바뀌면 적용 -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>10Resize</title>
+    <style>
+      .ball {
+        border: 1px solid;
+        min-width: 50px;
+        min-height: 50px;
+        border-radius: 50%;
+
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        margin: auto;
+
+        transition: 0.8s;
+      }
+      .ball-1280px {
+        width: 300px;
+        height: 300px;
+        border: 5px solid;
+        background-color: green;
+      }
+      .ball-768px {
+        width: 150px;
+        height: 150px;
+        border: 5px solid;
+        background-color: orange;
+      }
+      .ball-480px {
+        width: 100px;
+        height: 100px;
+        border: 5px solid;
+        background-color: yellow;
+      }
+      .desktop {
+      }
+    </style>
+  </head>
+  <body>
+    <div class="ball ball-1280px"></div>
+    <script>
+      window.addEventListener("resize", (e) => {
+        // console.log("외부 크기 변화 height 확인, ", window.outerHeight);
+        // console.log("외부 크기 변화 width 확인, ", window.outerWidth);
+        // console.log("내부 크기 변화 height 확인, ", window.innerHeight);
+        // console.log("내부 크기 변화 width 확인, ", window.innerWidth);
+
+        const width = window.innerWidth;
+        const ballEl = document.querySelector(".ball");
+        if (width <= 768) {
+          // 모바일처리
+          ballEl.className = "ball ball-480px";
+        } else if (width <= 1280) {
+          // 태블릿 처리
+          ballEl.className = "ball ball-768px";
+        } else {
+          // 데스크탑 처리
+          ballEl.className = "ball ball-1280px";
+        }
+      });
+    </script>
+  </body>
+</html>

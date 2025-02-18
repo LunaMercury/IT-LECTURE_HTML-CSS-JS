@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>07체크이벤트</title>
+  </head>
+  <body>
+    <div class="chk-block">
+      <input type="checkbox" name="" id="chk" />
+      <label for="chk">체크박스</label>
+    </div>
+    <script>
+      const chkE1 = document.querySelector("#chk");
+      chkE1.addEventListener("change", (e) => {
+        // console.log("changed", e);
+        if (e.target.checked == true) {
+          document.querySelector(".chk-block label").style.color = "yellow";
+        } else {
+          document.querySelector(".chk-block label").style.color = "black";
+        }
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>06타자연습</title>
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=airport_shuttle"
+    />
+    <style>
+      .material-symbols-outlined {
+        font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
+      }
+    </style>
+    <style>
+      .container {
+        width: 80vw;
+        margin: 100px auto;
+      }
+      .container > * {
+        margin-bottom: 20px;
+      }
+      .container > h1 {
+        text-align: center;
+      }
+      .container > #target-text {
+        font-size: 2rem;
+        text-align: start;
+      }
+      .container > input[type="text"] {
+        width: 100%;
+        height: 35px;
+        font-size: 1.2rem;
+      }
+      .container > #result {
+        font-size: 1rem;
+        text-align: left;
+        min-height: 30px;
+      }
+      .valid {
+        color: green;
+      }
+      .invalid {
+        color: red;
+      }
+      #percentage {
+        width: 100%;
+        height: 25px;
+        border: 1px solid;
+        padding: 2px;
+        position: relative;
+      }
+      #percentage > span {
+        position: absolute;
+        left: 0%;
+
+        transition: 1s ease-in-out;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>타자연습</h1>
+      <div id="target-text"></div>
+      <div id="result">입력된 값이 올바른지 여부를 확인하는 곳입니다.</div>
+      <input type="text" id="input-text" placeholder="위 문장을 입력하세요" />
+      <div id="percentage">
+        <span class="material-symbols-outlined"> airport_shuttle </span>
+      </div>
+
+      <script>
+        // 요소 찾기
+        const targetTextE1 = document.querySelector("#target-text");
+        const inputE1 = document.querySelector("#input-text");
+        const resultE1 = document.querySelector("#result");
+
+        // 문장 배열
+        const texts = [
+          "에펙하세요",
+          "배그합시다",
+          "스1하지마세요",
+          "메던하지마세요",
+        ];
+
+        // 문장 랜덤 배치
+        let randomIdx = parseInt((Math.random() * 100) % texts.length);
+        // console.log(randomIdx);
+        let textIdx = randomIdx;
+        targetTextE1.innerHTML = texts[textIdx];
+
+        // 이벤트 처리
+
+        // 단어 하나씩 확인
+        inputE1.addEventListener("input", (e) => {
+          // 일치하는 문자개수 저장
+          let validcount = 0;
+          // 일치 여부 체크
+          const text = texts[textIdx];
+          // result에 입력한 내용 표시(True : green, False : red)
+          let resultHTML = "";
+          const inputValue = inputE1.value;
+          console.log(inputValue);
+          console.log(e.data);
+          for (let i = 0; i < inputValue.length; i++) {
+            console.log(`input ${i}`, inputValue[i], "event.data", e.data);
+            if (i >= text.length) {
+              resultHTML += `<span class="invalid">${inputValue[i]}</span>`; //제시된 text보다 길면 invalid
+            } else if (text[i] !== inputValue[i]) {
+              resultHTML += `<span class="invalid">${inputValue[i]}</span>`; //제시된 각 text와 다르면 invalid
+            } else {
+              resultHTML += `<span class="valid">${inputValue[i]}</span>`;
+              validcount++;
+            }
+          }
+          resultE1.innerHTML = resultHTML;
+          // 문장완성도를 백분률로 환산
+          console.log(
+            "전체문자길이 :",
+            text.length,
+            "옳게 입력한 문자 개수 :",
+            validcount
+          );
+          const progressPercent = (validcount / text.length) * 100;
+          const progressIconE1 = document.querySelector("#percentage > span");
+          progressIconE1.style.left = `${progressPercent}%`;
+          if (progressIconE1.style.left != 100) {
+            progressIconE1.style.left = `${progressPercent}%`;
+          } else {
+            progressIconE1.style.left = `${progressPercent}% - 25px`;
+          }
+
+          // 문장 전체 일치 여부 확인
+          if (text === inputValue) {
+            inputE1.disabled = true;
+            // 지연시간 -> setTimeout()
+            setTimeout(() => {
+              //   ++textIdx >= texts.length ? (textIdx = 0) : textIdx;
+              // textIdx = ++textIdx >= texts.length ? 0 : textIdx;
+
+              // 뭔가 안됨. 루프 만들기...
+              while (true) {
+                let randomIdx2 = parseInt((Math.random() * 100) % texts.length);
+                if (textIdx !== randomIdx2) {
+                  textIdx = randomIdx2;
+                  break; // textIdx가 randomIdx2와 다르면 반복문 종료
+                }
+              }
+
+              targetTextE1.innerHTML = texts[textIdx];
+              inputE1.value = "";
+              resultE1.innerHTML = "";
+              // 문장배열의 길이를 초과하는 경우 다시 0 Idx로 설정
+              progressIconE1.style.left = 0;
+            }, 1200);
+            inputE1.disabled = false;
+            inputE1.focus();
+
+            // 자동차아이콘
+          }
+        });
+
+        // 조합된 문장 전체 일치 여부
+        // inputE1.addEventListener("compositionupdate", (e) => {
+        //   const inputValue = inputE1.value;
+        //   console.log("composition", e);
+        //   console.log("composition.target.value", e.target.value);
+        // });
+      </script>
+    </div>
+  </body>
+</html>

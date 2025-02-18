@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>09스크롤</title>
+  </head>
+  <body style="height: 5000px; margin: 0; padding: 0; width: 8000px">
+    <script>
+      document.addEventListener("scroll", (e) => {
+        // --------------------------------
+        // 세로 축 확인
+        // --------------------------------
+
+        // window.scrollY : viewport를 기준으로 가장 위쪽 부분의 세로축 위치
+        // console.log("scrollY", window.scrollY);
+        console.log("scrolltop", document.documentElement.scrollTop);
+        // console.log("scrollHeight", document.documentElement.scrollHeight);
+
+        // --------------------------------
+        // 가로 축 확인
+        // --------------------------------
+        // console.log("scrollX", window.scrollX);
+        // console.log("scrollLeft", document.documentElement.scrollLeft);
+        console.log("scrollWidth", document.documentElement.scrollLeft);
+      });
+    </script>
+  </body>
+</html>

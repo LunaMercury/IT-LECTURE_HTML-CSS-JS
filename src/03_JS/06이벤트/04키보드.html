@@ -1,0 +1,62 @@
+<!-- 키보드로 한글 입력하면 단어 확인 -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>04키보드</title>
+  </head>
+  <body>
+    input : <input id="input1" type="text" /><br />
+    <p id="p1"></p>
+    <hr />
+    composition start : <input id="input2" type="text" /><br />
+    <p id="p2"></p>
+    <hr />
+    composition update : <input id="input3" type="text" /><br />
+    <p id="p3"></p>
+    <hr />
+    composition end : <input id="input4" type="text" /><br />
+    <p id="p4"></p>
+    <hr />
+
+    <script>
+      // input              : 텍스트 입력 완료될 때 발생(한글포함)
+      const inputE1 = document.querySelector("#input1"); // 인풋 안의 내용
+      const p1E1 = document.querySelector("#p1"); // 인풋 밑의 p태그
+      inputE1.addEventListener("input", (e) => {
+        console.log("input.e", e);
+        console.log("input.e.key", e.data);
+        p1E1.innerHTML = e.data;
+      });
+
+      // compositionstart   : 한글 조합 시작시 발생. 영어는 안됨
+      // 글자 완성하고 다음으로 넘어갈 때 적용
+      const compositionstartE1 = document.querySelector("#input2");
+      const p2E1 = document.querySelector("#p2");
+      compositionstartE1.addEventListener("compositionstart", (e) => {
+        console.log("compositionstart.e", e);
+        console.log("compositionstart.e.target", e.target.value);
+        p2E1.innerHTML = e.target.value;
+      });
+
+      // compositionupdate  : 한글 조합 중 발생(현재 조합 상태를 확인)
+      const compositionupdateE1 = document.querySelector("#input3");
+      const p3E1 = document.querySelector("#p3");
+      compositionupdateE1.addEventListener("compositionupdate", (e) => {
+        console.log("compositionupdate.e", e);
+        console.log("compositionupdate.e.target", e.target.value);
+        p3E1.innerHTML = e.target.value;
+      });
+
+      // compositionend     : 한글 조합 완료 시 발생(완성된 글자 확인)
+      const compositionendE1 = document.querySelector("#input4");
+      const p4E1 = document.querySelector("#p4");
+      compositionendE1.addEventListener("compositionend", (e) => {
+        console.log("compositionend.e", e);
+        console.log("compositionend.e.target", e.target.value);
+        p4E1.innerHTML = e.target.value;
+      });
+    </script>
+  </body>
+</html>

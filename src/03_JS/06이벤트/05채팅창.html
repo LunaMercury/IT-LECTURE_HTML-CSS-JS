@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>05채팅창</title>
+  </head>
+  <body>
+    KEYDOWN : <input id="input2" type="text" /><br />
+    <p id="p2"></p>
+    <hr />
+
+    <script>
+      const keydownE1 = document.querySelector("#input2");
+      const p2E1 = document.querySelector("#p2");
+      keydownE1.addEventListener("keydown", (e) => {
+        console.log("down.e", e);
+        console.log("down.e.key", e.key);
+        console.log("down.e.keycode", e.keyCode);
+        // p2E1.innerHTML = e.key + " " + e.keyCode;
+
+        if (e.keyCode == 13) {
+          const text = keydownE1.value;
+          const newE1 = document.createElement("div");
+          newE1.innerHTML = text;
+          p2E1.prepend(newE1); //append는 아래
+          keydownE1.value = "";
+        }
+      });
+    </script>
+  </body>
+</html>
