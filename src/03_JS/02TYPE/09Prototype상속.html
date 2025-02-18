@@ -26,7 +26,7 @@
       // 하위 프로토타입 함수
       function Dog(name, kind) {
         //call. 상위 프로토타입 생성자 호출. 이로인해 Dog도 getName을 사용할 수 있다.
-        Animal.call(this, name); // this는 객체주소. 없으면 name 속성이 안불러와진다.
+        Animal.call(this, name); // this는 객체주소. name은 Dog의 name 없으면 name 속성이 안불러와진다. 즉 Dog의 name을 Animal()함수에 넣는다.
         console.log("Dog 생성자 호출");
         this.kind = kind;
         // 아래와 같이 function 안에 기능 넣어도 되는듯

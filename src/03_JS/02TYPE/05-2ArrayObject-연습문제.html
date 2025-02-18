@@ -112,15 +112,15 @@
         item = { ...item, total_salary: item.salary + item.years * 100 };
         return item;
       });
-      console.log(c);
+      console.log("c", c);
       //department(부서) 별로 직원들의 연봉총합을 구하세요
       const d = employees.reduce((sum, item) => {
         sum[item.department] =
-          (sum[item.department] == undefined ? 0 : sum[item.department]) + // ?는 사망연산자이다
-          item.salary;
+          (sum[item.department] == undefined ? 0 : sum[item.department]) +
+          item.salary; // ?는 사망연산자이다
         return sum;
-      });
-      console.log("d", d.sum);
+      }, {}); // 마지막 빈 중괄호 넣어줘야 한다.
+      console.log("d", d);
       //연봉(salary)가 가장높은 직원을 찾아 객체하나만 반환(문서에서 find를 찾아보세요 - !)
     </script>
   </body>
