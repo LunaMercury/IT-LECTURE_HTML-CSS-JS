@@ -1,0 +1,135 @@
+<!-- 입력하면 아래에 박스 생성. 공백 및 첫문자숫자 불가 -->
+<!-- 노드 삭제 기능 -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>04El_Crud</title>
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=delete"
+    />
+    <style>
+      .material-symbols-outlined {
+        font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
+      }
+    </style>
+    <style>
+      .item {
+        min-width: 300px;
+        height: 35px;
+        margin: 5px;
+        padding: 5px;
+        border: 1px solid;
+
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 10px;
+      }
+      .item > .left {
+        width: calc(100% - 35px);
+        height: 100%;
+        border: 1px solid;
+        padding-left: 5px;
+
+        display: flex;
+        justify-content: start;
+        align-items: center;
+      }
+      .item > .right {
+        width: 30px;
+        height: 100%;
+        border: 1px solid;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .item > .right {
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <input class="input" type="text" name="" id="" /><span>|</span
+    ><button class="btn">입력</button>
+    <hr />
+    <div class="container"></div>
+
+    <script>
+      // DOM LOAD
+      document.addEventListener("DOMContentLoaded", () => {
+        // 요소 검색
+        const inputEl = document.querySelector(".input");
+        const btnEl = document.querySelector(".btn");
+        const containerEl = document.querySelector(".container");
+
+        // btnEl에 이벤트 처리
+        btnEl.addEventListener("click", () => {
+          console.log("입력 clicked");
+          const text = inputEl.value;
+          createNode(text);
+          inputEl.value = "";
+        });
+
+        // 함수 선언
+        function createNode(text) {
+          if (!isValid(text)) {
+            return 0;
+          }
+          // <span class="material-symbols-outlined">delete</span>;
+          // div만들기. div>div.left(text)+div.right(icon)
+          // 노드 생성
+          const divEl = document.createElement("div");
+          const leftEl = document.createElement("div");
+          const rightEl = document.createElement("div");
+          const deleteEl = document.createElement("span");
+
+          deleteEl.addEventListener("click", (e) => {
+            deleteNode(e);
+          });
+
+          // <span class="material-symbols-outlined">delete</span>;
+          // 스타일링(class) 추가
+          divEl.classList.add("item");
+          leftEl.classList.add("left");
+          rightEl.classList.add("right");
+          deleteEl.classList.add("material-symbols-outlined");
+
+          // 노드 연결
+          rightEl.appendChild(deleteEl);
+          divEl.appendChild(leftEl);
+          divEl.appendChild(rightEl);
+          containerEl.appendChild(divEl);
+
+          // 텍스트 입력
+          leftEl.innerHTML = text;
+          deleteEl.innerHTML = "delete";
+        }
+
+        function deleteNode(del_btn) {
+          const itemEl = del_btn.target.parentNode.parentNode;
+          console.log("parentNode", itemEl);
+          itemEl.remove();
+        }
+
+        // 유효성 체크 함수
+        function isValid(text) {
+          const regex = /^[0-9]/; // 정규표현식
+          if (text.trim() === "" || text.trim() === null) {
+            alert("공백 불가");
+            console.error("inValid error", "공백 불가");
+            return false;
+          } else if (regex.test(text)) {
+            alert("첫 문자는 숫자 불가");
+            console.error("inValid error", "첫 문자는 숫자 불가");
+            return false;
+          }
+          return true;
+        }
+      });
+    </script>
+  </body>
+</html>

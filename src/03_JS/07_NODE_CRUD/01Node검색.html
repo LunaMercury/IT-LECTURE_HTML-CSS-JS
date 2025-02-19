@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>01Node검색</title>
+  </head>
+  <body>
+    <ul>
+      <li>LIST_1</li>
+      <li id="li-2">LIST_2</li>
+      <li class="item">LIST_3</li>
+      <li>LIST_4</li>
+      <li id="li-5">LIST_5</li>
+      <li>LIST_6</li>
+      <li class="item">LIST_7</li>
+      <li class="item">LIST_8</li>
+    </ul>
+
+    <script>
+      // getElementById("id명"), #은 필요없다.
+      const li2El = document.getElementById("li-2");
+      li2El.style.backgroundColor = "orange";
+      li2El.style.fontSize = "2rem";
+
+      // querySelector("선택자"). 하나만 선택된다
+      // 이 경우는 item 클래스가 제일 처음 검색되는 list3에 적용된다.
+      const itemEl = document.querySelector(".item");
+      itemEl.style.color = "green";
+      itemEl.style.fontWeight = "900";
+      //동시에 적용하려면 아래와 같이 querySelectorAll과 forEach를 병행해야 한다.
+      const itemEls = document.querySelectorAll(".item");
+      itemEls.forEach((element) => {
+        element.style.border = "1px solid orange";
+        element.style.margin = "20px 0";
+      });
+
+      // 유사배열
+      const liEls = document.getElementsByTagName("li");
+      console.log("liEls", liEls);
+
+      // forEach를 사용할 수 있도록 배열처리. 유사배열->배열
+      // Array.from()
+      const liEls2 = Array.from(liEls);
+      console.log("liEls2", liEls2);
+      liEls2.forEach((element) => {
+        console.log("liEls2.forEach", element);
+      });
+    </script>
+  </body>
+</html>

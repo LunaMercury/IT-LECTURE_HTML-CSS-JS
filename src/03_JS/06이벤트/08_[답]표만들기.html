@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <style>
+        td{width :50px;height:50px;border : 1px solid gray;}
+        input{width:90%; height:100%;outline:none;border:0px;}
+    </style>
+    
+    <input id="rownum" placeholder="행의개수입력" style="width:200px;">
+    <input id="colnum" placeholder="열의개수입력" style="width:200px;">
+    <button onclick="makemap()">생성</button>
+
+    <hr>
+    <table id="tbl">
+    </table>
+    
+    <script>
+        let curX = 0;
+        let curY = 0;
+        let tableRow=0;
+        let tableCol=0;
+        function makemap(){
+
+            const row =document.getElementById("rownum").value;
+            const col =document.getElementById("colnum").value;
+            const tbl =document.getElementById('tbl')
+            tableRow = row;
+            tableCol = col;
+
+            // 자식 노드 삭제
+            while(tbl.firstChild)  {
+                tbl.removeChild(tbl.firstChild);
+            }
+
+            let cnt=1;
+            for(let i=1; i<=row;i++){
+                let tr = document.createElement('tr')
+                
+                for(let j=1;j<=col;j++){
+                    let td = document.createElement('td')
+                    td.setAttribute("id",i+"|"+j)
+                    td.addEventListener('click',()=>{
+                        console.log('clicked',i+"|"+j);
+                        changeWhite(curX,curY)  //현재 위치의 좌표 td에 white
+                        changeBlack(i,j)        //이동할 위치의 좌표 td에 gray
+                        curX=i;                 //현재 위치 변경
+                        curY=j;                 //현재 위치 변경
+                    })
+                    td.innerText=cnt++;
+                    tr.appendChild(td)
+                }
+                tbl.appendChild(tr)
+            }
+
+            //기본위치
+            curX = Math.ceil(row/2);
+            curY = Math.ceil(col/2);
+            changeBlack(curX,curY);
+        }
+
+        function changeBlack(xPos,yPos){
+            document.getElementById(xPos+"|"+yPos).style.backgroundColor="gray";
+        }
+        function changeWhite(xPos,yPos){
+            document.getElementById(xPos+"|"+yPos).style.backgroundColor="white";
+        }
+
+        document.addEventListener('keydown',(e)=>{
+
+            console.log(e.keyCode)
+            if(e.keyCode===37){
+                //LEFT : 37
+                changeWhite(curX,curY);
+                (curY-1<=1) ? curY=1 : curY--;
+                changeBlack(curX,curY)
+            }
+            if(e.keyCode===39){
+                //RIGHT : 39
+                changeWhite(curX,curY);
+                (curY+1>=tableCol) ? curY=tableCol : curY++;
+                changeBlack(curX,curY)
+            }
+
+            if(e.keyCode===38){
+                //UP : 38 
+                changeWhite(curX,curY);
+                (curX-1<=1) ? curX=1 : curX--;
+                changeBlack(curX,curY)   
+            }
+            if(e.keyCode===40){
+                //DOWN : 40
+                changeWhite(curX,curY);
+                (curX+1>=tableRow) ? curX=tableRow : curX++;
+                changeBlack(curX,curY)   
+            }
+        })
+
+    </script>
+    
+</body>
+</html>

@@ -1,0 +1,83 @@
+<!-- 버튼에 마우스 올리면 색 바뀜 -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .btn {
+        width: 120px;
+        height: 30px;
+        line-height: 30px;
+        text-align: center;
+        margin: 5px;
+        padding: 5px;
+        border: 1px solid;
+        border-radius: 5px;
+
+        transition: 3s;
+        cursor: pointer;
+      }
+      .btn--bg0 {
+        background-color: red;
+        color: white;
+      }
+      .btn--bg1 {
+        background-color: orange;
+        color: white;
+      }
+      .btn--bg2 {
+        background-color: yellow;
+        color: black;
+      }
+      .btn--bg3 {
+        background-color: green;
+        color: white;
+      }
+      .btn--bg4 {
+        background-color: blue;
+        color: white;
+      }
+      .btn--bg5 {
+        background-color: navy;
+        color: white;
+      }
+      .btn--bg6 {
+        background-color: purple;
+        color: white;
+      }
+      .btn--bg7 {
+        background-color: black;
+        color: white;
+      }
+      .btn--bg8 {
+        background-color: white;
+        color: black;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="btn">BUTTON_1</div>
+    <div class="btn">BUTTON_2</div>
+    <div class="btn">BUTTON_3</div>
+    <div class="btn">BUTTON_4</div>
+    <div class="btn">BUTTON_5</div>
+    <div class="btn">BUTTON_6</div>
+    <div class="btn">BUTTON_7</div>
+    <div class="btn">BUTTON_8</div>
+
+    <script>
+      const btnEls = document.querySelectorAll(".btn");
+      btnEls.forEach((btn, idx) => {
+        console.log(idx, btn);
+        btn.addEventListener("mouseover", () => {
+          btn.classList.add(`btn--bg${idx}`);
+        });
+        btn.addEventListener("mouseleave", () => {
+          btn.classList.remove(`btn--bg${idx}`);
+        });
+      });
+    </script>
+  </body>
+</html>

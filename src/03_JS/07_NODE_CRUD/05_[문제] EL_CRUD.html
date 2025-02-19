@@ -1,0 +1,172 @@
+<!-- 이름 나이 주소 입력클릭하면 밑에 작성 -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <!-- GOOGLE ICON -->
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+    />
+    <style>
+      * {
+        font-size: 1rem;
+      }
+      .material-symbols-outlined {
+        font-variation-settings: "FILL" 0, "wght" 300, "GRAD" 0, "opsz" 24;
+        font-size: 1.5rem;
+      }
+      input {
+        height: 35px;
+      }
+      .btn {
+        width: 75px;
+        height: 35px;
+        border-radius: 5px;
+        background-color: white;
+        cursor: pointer;
+      }
+
+      th,
+      td {
+        width: 50px;
+        height: 35px;
+        border: 1px solid;
+        margin: 2px;
+      }
+      th:nth-child(1),
+      td:nth-child(1) {
+        width: 150px;
+      }
+      th:nth-child(3),
+      td:nth-child(3) {
+        width: 700px;
+      }
+      .material-symbols-outlined {
+        cursor: pointer;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+    </style>
+  </head>
+  <body>
+    <form action="" name="joinForm" onsubmit="return false">
+      <input id="name" name="username" placeholder="이름을 입력하세요" />
+      <input id="age" name="age" placeholder="나이를 입력하세요" />
+      <input id="address" name="address" placeholder="주소를 입력하세요" />
+      <button class="btn">입력</button>
+    </form>
+    <hr />
+    <div>
+      <table>
+        <thead>
+          <tr>
+            <th>이름</th>
+            <th>나이</th>
+            <th>주소</th>
+            <th>삭제</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+    <script>
+      // form의 기본기능은 비활성화합니다
+      //입력버튼을 눌렀을때 table의 tbody에 입력된 (이름/나이/주소/삭제버튼)이 생성될수 있도록합니다
+      //입력된 노드의 이름/나이/주소를 수정할수 있도록합니다.
+      //특정행의 삭제버튼을 클릭했을때 해당 행이 삭제 될수 있도록 합니다.
+
+      //특정행의 위치를 위로이동/아래로 이동이 가능하도록 합니다(나중에)
+
+      // 요소 검색
+      const formEl = document.joinForm;
+      console.log("formEl :", formEl);
+      //데이터 가져오기
+      const usernameEl = formEl.username;
+      const ageEl = formEl.age;
+      const addressEl = formEl.address;
+      const btnEl = document.querySelector(".btn"); //입력
+      const tableBodyEl = document.querySelector("table tbody");
+
+      // 버튼 이벤트 처리
+      btnEl.addEventListener("click", (profile) => {
+        console.log("create Nod");
+        // 데이터 가공
+        const username = usernameEl.value;
+        const age = ageEl.value;
+        const address = addressEl.value;
+        console.log("username, age, address", username, age, address);
+
+        createNode({ username: username, age: age, address: address });
+        usernameEl.value = "";
+        ageEl.value = "";
+        addressEl.value = "";
+      });
+
+      function createNode({ username, age, address }) {
+        // 노드 만들기 전에 유효성 검사를 먼저
+        if (!isValid(username, age, address)) {
+          return 0;
+        }
+
+        // 노드 생성
+        const trEl = document.createElement("tr");
+        const 이름El = document.createElement("th");
+        const 나이El = document.createElement("th");
+        const 주소El = document.createElement("th");
+        const 삭제El = document.createElement("th");
+
+        // 클래스 적용
+        삭제El.classList.add("material-symbols-outlined");
+
+        // tbody 안에 넣기
+        trEl.appendChild(이름El);
+        trEl.appendChild(나이El);
+        trEl.appendChild(주소El);
+        trEl.appendChild(삭제El);
+        tableBodyEl.appendChild(trEl);
+
+        // 텍스트 입력
+        이름El.innerHTML = username;
+        나이El.innerHTML = age;
+        주소El.innerHTML = address;
+        삭제El.innerHTML = "delete";
+
+        삭제El.addEventListener("click", (e) => {
+          deleteNode(e);
+        });
+      }
+
+      // 노드 삭제 함수
+      function deleteNode(del_btn) {
+        const itemEl = del_btn.target.parentNode;
+        itemEl.remove();
+        console.log("remove Nod");
+      }
+
+      // 입력 유효성 검사
+      function isValid(username, age, address) {
+        const regexname = /^[가-힣ㄱ-ㅣa-zA-Z]{1,}$/; // 한 자도 가능
+        const regexage = /^[0-9]{1,}$/; // 두 자리수 까지
+        const regexaddress = /^[가-힣ㄱ-ㅣa-zA-Z]{1,}$/; // 한 자도 가능
+        if (!regexname.test(username)) {
+          alert("문자만 가능");
+          console.log("문자만 가능");
+          return 0;
+        } else if (!regexage.test(age)) {
+          alert("숫자만 가능");
+          return 0;
+        } else if (!regexaddress.test(address)) {
+          alert("올바른 주소 입력");
+          return 0;
+        }
+        return 1;
+      }
+    </script>
+  </body>
+</html>
