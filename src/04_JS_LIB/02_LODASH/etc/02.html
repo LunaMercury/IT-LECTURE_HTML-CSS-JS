@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- lodash cdn -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.21/lodash.min.js" integrity="sha512-WFN04846sdKMIP5LKNphMaWzU7YpMyCU245etK3g/2ARYbPK9Ub18eG+ljU96qKRCWh+quCY7yefSmlkQw1ANQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <style>
+        body{height:5000px;}
+        #to-top{
+            width:50px;
+            height:50px;
+            /* border:1px solid; */
+            position:fixed;
+            right:50px;
+            top:85%;
+            transition: 0.5s;
+
+            font-size:2rem;
+            text-align:center;
+            line-height:50px;
+
+            cursor: pointer;
+        }
+        .hide{
+            opacity: 0;
+        }
+
+    </style>
+</head>
+<body>
+    <!-- 이모지 : 윈도우로고키 + . -->
+    <div id="to-top" class="hide"> 
+        <span style="position:absolute;font-size:0.6rem;font-weight:600;top:45%;left:20%;">to-top</span>
+        🔺 
+    </div>
+
+    <script>
+        const toTopBtn_el = document.getElementById('to-top');
+        toTopBtn_el.addEventListener('click',function(){
+            window.scrollTo({top:0,behavior:'smooth'})
+        })
+
+        window.addEventListener('scroll',_.throttle(function(){
+            console.log("scroll_event's Y : " ,window.scrollY);
+            if(window.scrollY>700){
+                toTopBtn_el.classList.remove('hide')
+            }else{
+                toTopBtn_el.classList.add('hide')
+            }
+
+        },300))
+
+    </script>
+</body>
+</html>

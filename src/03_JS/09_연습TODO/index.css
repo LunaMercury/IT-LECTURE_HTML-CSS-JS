@@ -1,0 +1,219 @@
+:root{
+    font-size : 16px;
+}
+*{
+    box-sizing : border-box;
+}
+ul{
+    list-style:none;
+    padding : 0;
+    margin :0;
+}
+a{
+    text-decoration: none;
+    color : black;
+}
+
+tr{
+   
+}
+th,td{
+    text-align:center;
+}
+
+.layout-360{
+    /* margin:0px 360px; */
+    width :380px;
+    margin : 0px auto;
+}   
+.inactive{
+    display:none;
+}
+
+body{
+    margin : 0;
+    padding : 0;
+    
+    /* width : 1920px;
+    height : 1080px; */
+    width : 100%;
+    height :calc(100vh - 80px);
+}
+
+.wrapper{
+    width : 100%;
+    height : 100%;
+    margin : 0 auto;
+    position:relative;
+}
+
+.wrapper>header{
+    height : 80px;
+    border-bottom : 1px solid;
+}
+.wrapper>header>.top-header{
+
+   
+}
+.wrapper>header>nav{
+    height : 100%;
+    
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+.wrapper>main{
+    height : 100%;
+}
+.wrapper>main>section{
+  
+    padding : 5px;
+    padding-bottom : 50px;
+    font-size : .8rem;
+    height : 80vh;
+    border : 1px solid;
+    border-top : 0;
+    overflow : auto;
+}   
+.wrapper>main>section::-webkit-scrollbar{
+    display:none;
+}
+
+.wrapper>main>section .items{
+
+}
+.wrapper>main>section .items .item{
+    display:flex;
+    height : 50px;
+    position:relative;
+    box-shadow: 3px 3px 3px lightgray;
+    margin : 5px;
+    position:relative;
+}
+
+.doneStyle::after{
+    content:"DONE";
+    width : 203px;
+    height : 50px;
+    color : white;
+    background-color: rosybrown;
+
+
+    display:flex;
+    justify-content: start;
+    align-items : center;
+
+
+    position:absolute;
+    left:0;
+    bottom:0;
+
+}
+
+.wrapper>main>section .items .item .fragment{
+   
+
+    display:flex;
+    justify-content: start;
+    align-items : center;
+
+   
+    position:absolute;
+    left:0;
+    top:0;
+    border-top : 5px solid white;
+    border-left :5px solid white;
+    border-right: 5px solid black;
+    border-bottom : 5px solid black;
+    z-index:2;
+
+}
+
+.wrapper>main>section .items .item .todo{
+    width : 280px;
+    height : 100%;
+    
+    /* background-zcolor:bisque; */
+    outline:none;
+    border : 0;
+    display:flex;
+    justify-content: start;
+    align-items: center;
+    padding : 5px;
+    font-size : .8rem;
+    border : 1px solid;
+    margin-right : 2px;
+}
+.wrapper>main>section .items .item .done{
+    font-size : .7rem; 
+    height : 100%;
+    display:flex;
+    margin-right : 2px;
+}
+.wrapper>main>section .items .item .done a{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    width : 50px;
+    height : 100%;
+    border : 1px solid;
+
+  
+}
+.wrapper>main>section .items .item .edit{
+    font-size : .7rem; 
+    height : 100%;
+    display:flex;
+}
+.wrapper>main>section .items .item .edit a{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    width : 50px;
+    height : 100%;
+  
+}
+.wrapper>main>section .items .item .edit a:nth-child(1){
+   
+    color : black;
+    border : 1px solid;
+    margin-right : 2px;
+}
+.wrapper>main>section .items .item .edit a:nth-child(2){
+  
+    color : black;
+    border : 1px solid;
+   
+}
+.wrapper>footer{
+    position:fixed;
+    bottom : 50px;
+    left : 0;
+    right : 0;
+    margin : auto;
+    width : 380px;
+}
+.wrapper>footer .add-block{
+    width : 100%;  
+    position:relative;
+
+}
+.wrapper>footer .add-block .add{
+    position:absolute;
+    top:0;
+    bottom:0;
+    margin : auto;
+
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+.wrapper>footer .add-block input{
+    height :45px;
+    padding-left : 25px;
+    border : 1px solid;
+    outline : none;
+}

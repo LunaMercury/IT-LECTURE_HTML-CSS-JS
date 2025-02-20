@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>02Set&clearInterval</title>
+    <style>
+      .box {
+        max-width: 1280px;
+        width: 100%;
+        height: 800px;
+        border: 1px solid;
+        margin: 0 auto;
+
+        display: flex;
+        justify-content: space-between;
+      }
+      .box > div {
+        max-width: 300px;
+        width: 100%;
+        border: 1px solid;
+        height: 100%;
+      }
+      .box > .main-thread {
+      }
+      .box > .sub1-thread {
+      }
+      .box > .sub2-thread {
+      }
+    </style>
+  </head>
+  <body>
+    <div class="box">
+      <div class="main-thread"></div>
+      <div class="sub1-thread"></div>
+      <div class="sub2-thread"></div>
+    </div>
+
+    <script>
+      const mainThreadEl = document.querySelector(".main-thread");
+      const sub1ThreadEl = document.querySelector(".sub1-thread");
+      const sub2ThreadEl = document.querySelector(".sub2-thread");
+
+      // MAIN Thread 반복 동작
+      let cnt = 0;
+      setInterval(() => {
+        mainThreadEl.innerHTML += `MAIN THREAD..${++cnt}<br/>`;
+      }, 1000);
+
+      // Promise 비동기 처리객체
+      function sub_process_executor(val) {
+        //resolve : 성공시, reject : 실패시
+        return new Promise((resolve, reject) => {
+          setTimeout(() => {
+            resolve(val); //비동기요청 성공시에 전달되는 값(then 이하로 받기)
+          }, 3000);
+        });
+      }
+
+      // // sub1-thread 동작
+      // sub_process_executor(1)
+      //   .then((response) => {
+      //     console.log(response);
+      //     sub1ThreadEl.innerHTML += `sub-thread ${response}<br/>`;
+      //   })
+      //   .catch((error) => {
+      //     console.log(error);
+      //   });
+      // // sub2-thread 동작
+      // sub_process_executor(2)
+      //   .then((response) => {
+      //     console.log(response);
+      //     sub2ThreadEl.innerHTML += `sub-thread ${response}<br/>`;
+      //   })
+      //   .catch((error) => {
+      //     console.log(error);
+      //   });
+
+      // async, await - 비동기처리 순서를 지정할 때 사용
+      // async 예약 : 해당 함수가 비동기적인 처리를 하는 프로세스임을 암시
+      // await 예약 : async 블럭 내부에서 사용되며, 비동기 작업이 완료시까지 대기하는 예약어
+
+      async function sub_process_func() {
+        await sub_process_executor(1)
+          .then((response) => {
+            console.log(response);
+            sub1ThreadEl.innerHTML = `sub-thread ${response}<br/>`;
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+
+        await sub_process_executor(2)
+          .then((response) => {
+            console.log(response);
+            sub2ThreadEl.innerHTML = `sub-thread ${response}<br/>`;
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+      }
+      sub_process_func();
+    </script>
+  </body>
+</html>

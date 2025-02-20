@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+    <!-- LODASH cdn -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.21/lodash.min.js" integrity="sha512-WFN04846sdKMIP5LKNphMaWzU7YpMyCU245etK3g/2ARYbPK9Ub18eG+ljU96qKRCWh+quCY7yefSmlkQw1ANQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <style>
+        body{
+            height:7000px;
+        }
+        .badge{
+            width : 100px;
+            height : 200px;
+            border : 1px solid;
+            background-color: lightblue;
+            box-shadow: 5px 5px 5px lightgray;
+            border-radius: 10px;
+
+            position:fixed;
+            right:50px;
+            top:200px;
+            z-index:100;
+            visibility: hidden;
+            transition: .5s;
+            opacity: 0;;
+        }
+    </style>
+</head>
+<body>
+
+
+    <div class="badge">  </div>
+
+    <script>
+
+        //console.log(_)        
+        window.addEventListener('scroll', _.throttle((e)=>{
+            const yPos = window.scrollY;
+            console.log(yPos)
+            const badge = document.querySelector('.badge')
+
+            if(yPos>=300){
+                badge.style.visibility='visible'
+                badge.style.opacity='1'
+            }else{
+                badge.style.visibility='hidden'
+                badge.style.opacity='0'
+            }
+
+        }
+        ,300)  )
+
+    </script>
+    
+</body>
+</html> 

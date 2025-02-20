@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>00INFO</title>
+  </head>
+  <body>
+    <script>
+      // 스크립트 내 코드에서의 동기(약속) : 메인코드라인(메인Thread)대로 코드를 실행 처리
+      // 스크립트 내 코드에서의 비동기 : 메인코드라인(메인Thread)에서 분할된(Worker Thread)에서 독립적으로 코드를 실행 처리
+      // [주의] 스크립트내에서 스레드를 분할처리하는 것은 실제로 스레드가 분할되는것은아니라 그렇게 보이도록(가상) 처리하는것이다
+      // [주의] 자바스크립트는 싱글스레드 방식을 사용,실제로 스레드를 나눌수는 없다
+
+      // 메인스레드에서의 동작 확인. [메인스레드]
+      for (let i = 0; i < 10; i++) {
+        console.log("main for...1", i);
+      }
+      console.log("for1이 끝남");
+
+      // 여기서는 스레드가 나눠서 실행된다. [서브스레드]
+      setTimeout(() => {
+        for (let i = 0; i < 10; i++) {
+          console.log("Async, main for...2", i);
+        }
+        console.log("for2가 끝남");
+      }, 10);
+
+      // 여기서는 for1이 다 끝나고 for3이 시작된다. [메인스레드]
+      for (let i = 0; i < 10; i++) {
+        console.log("main for...3", i);
+      }
+      console.log("for3이 끝남");
+    </script>
+  </body>
+</html>
