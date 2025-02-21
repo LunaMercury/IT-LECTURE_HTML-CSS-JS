@@ -1,0 +1,105 @@
+<!-- 중구 맛집 카테고리별 식당 그래프로 -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="./js/중구맛집.js"></script>
+    <style>
+      div {
+        width: 800px;
+        height: 500px;
+        border: 1px solid;
+        margin: 0 auto;
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <canvas id="myChart"></canvas>
+    </div>
+
+    <!-- 데이터 정리 -->
+    <script>
+      // 카테고리 추출(한식, 양식, 중식 등), 카테고리별 식당 Cnt
+      function extractDataSet(param) {
+        const total = param.total;
+        console.log("total", total);
+
+        const data = param.data;
+        console.log("중구맛집 data :", data);
+        // 음식 카테고리 Map
+        const category = data
+          .map((item) => {
+            return item.FD_CS;
+          })
+          .sort((a, b) => {
+            return a.localeCompare(b); //같은 글자에 따라 정렬
+          })
+          .reduce((acc, item) => {
+            if (acc[item] !== undefined) {
+              acc[item]++;
+            } else {
+              acc[item] = 0;
+            }
+            return acc;
+          }, {});
+        console.log("category", category);
+
+        // key, value 따로 분류
+        const keys = Object.keys(category);
+        const values = Object.values(category);
+        console.log("keys :", keys);
+        console.log("values :", values);
+
+        return { keys: keys, values: values };
+      }
+      const result = extractDataSet(중구맛집);
+      console.log(result);
+
+      function drawChart(title, obj, tag, type) {
+        const ctx = document.getElementById("myChart");
+
+        let data = {
+          labels: obj.keys,
+          datasets: [
+            {
+              label: obj.keys,
+              data: obj.values,
+              borderWidth: 0.2,
+              backgroundColor: ["Red", "Blue", "Yellow", "Green", "Purple"],
+              borderColor: "black",
+            },
+          ],
+        };
+        let options = {
+          scales: {
+            //   y: {
+            //     beginAtZero: true,
+            //     max: 100,
+            //     min: 0,
+            //     tick: { stepside: 10 },
+            //   },
+            // x: {
+            //   stacked: true, //옆에 자료 없으면 그래프 너비가 늘어남
+            //   barPercentage: 1.0, // ?
+            //   categoryPercentage: 1.0, // ?
+            // },
+          },
+          onClick: (event, chartEl) => {
+            console.log(event, chartEl);
+          },
+        };
+
+        new Chart(ctx, {
+          type: type,
+          data: data,
+          options: options,
+        });
+      }
+      drawChart("중구맛집", result, "myChart", "doughnut");
+    </script>
+  </body>
+</html>

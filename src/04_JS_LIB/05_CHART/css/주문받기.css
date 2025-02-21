@@ -1,0 +1,87 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    gap: 15px;
+}
+
+body>.show-block {
+    width: 400px;
+    height: 500px;
+    border: 1px solid;
+    padding: 15px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+
+}
+
+body>.show-block .item {
+    width: 100%;
+    margin-bottom: 15px;
+    display: flex;
+    ;
+    justify-content: left;
+    align-items: center;
+    padding: 5px;
+    border: 1px solid;
+}
+
+body>.show-block .item>* {
+    margin: 5px;
+}
+
+body>.show-block>h1 {
+    border-bottom: 1px solid;
+}
+
+body>.show-block .item>label {
+    min-width: 120px;
+    height: 100%;
+    display: block;
+    border-right: 1px solid;
+}
+
+body>.show-block .item>input {
+    height: 100%;
+}
+
+body>.show-block.order-input-block {}
+
+body>.show-block.search-block>.restorant-menu-block {
+    height: 300px;
+    border: 1px solid;
+    width: 100%;
+    overflow: auto;
+}
+
+
+/*  */
+body>.show-block.order-result-block {
+    width: auto;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+
+}
+
+body>.show-block.order-result-block .items {
+    display: flex;
+    justify-content: left;
+    padding: 5px;
+    margin: 5px;
+}
+
+body>.show-block.order-result-block .items>.item {
+    flex-direction: column;
+    justify-content: left;
+    align-items: start;
+    padding: 5px;
+    margin: 5px;
+}
+
+body>.show-block.order-result-block .items>.item>label {
+    border: 0;
+    font-size: .7rem;
+}

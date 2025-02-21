@@ -1,0 +1,87 @@
+<!-- 스크롤 아래로 내리면 그에 반응해 물체가 움직임 -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>01ScrollMagic</title>
+    <!-- ScrollMagic CDN -->
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.8/ScrollMagic.min.js"
+      integrity="sha512-8E3KZoPoZCD+1dgfqhPbejQBnQfBXe8FuwL4z/c8sTrgeDMFEnoyTlH3obB4/fV+6Sg0a0XF+L/6xS4Xx1fUEg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <style>
+      section {
+        width: 1200px;
+        height: 500px;
+        margin: 0 auto;
+        margin-bottom: 20px;
+        border: 1px solid;
+
+        position: relative;
+      }
+      .ball {
+        width: 100px;
+        height: 100px;
+        border: 1px solid;
+        border-radius: 50%;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        position: absolute;
+        left: 0;
+        top: 0;
+
+        transition: 0.5s;
+      }
+      .move {
+        left: calc(100% - 100px);
+        top: calc((100% - 100px));
+      }
+      .move2 {
+        left: calc(100% - 100px);
+        top: calc((100% - 100px));
+      }
+    </style>
+  </head>
+  <body>
+    <section></section>
+    <!-- scroll-spy 태그명은 일치해야 한다. -->
+    <section class="scroll-section scroll-spy first">
+      <div class="ball">BALL</div>
+    </section>
+    <section class="scroll-section scroll-spy second">
+      <div class="ball">BALL</div>
+    </section>
+    <section></section>
+
+    <script>
+      const spyedEls = document.querySelectorAll(".scroll-spy");
+      spyedEls.forEach((e) => {
+        console.log(e);
+        const ballEl = document.querySelector(".ball");
+        if (e.classList.contains("first")) {
+          new ScrollMagic.Scene({
+            triggerElement: e, //감시할 요소
+            triggerHook: 0.5, //스크롤의 위치값(0~1, 0:최상단, 1:최하단). 여기에 다다랐을 때 아래의 효과를 적용
+          })
+            .setClassToggle(ballEl, "move")
+            .addTo(new ScrollMagic.Controller());
+        } else if (e.classList.contains("second")) {
+          new ScrollMagic.Scene({
+            triggerElement: e, //감시할 요소
+            triggerHook: 0.5, //스크롤의 위치값(0~1, 0:최상단, 1:최하단). 여기에 다다랐을 때 아래의 효과를 적용
+          })
+            .setClassToggle(ballEl, "move2")
+            .addTo(new ScrollMagic.Controller());
+        }
+      });
+      const ballEl = document.querySelector(".scroll-spy .ball");
+    </script>
+  </body>
+</html>

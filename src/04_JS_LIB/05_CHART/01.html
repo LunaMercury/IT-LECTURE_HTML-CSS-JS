@@ -1,0 +1,103 @@
+<!-- 색깔별 선호도를 그래프로 -->
+<!-- 위 태그 클릭하면 켜고 끔 -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+      div {
+        width: 800px;
+        height: 500px;
+        border: 1px solid;
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <canvas id="myChart"></canvas>
+    </div>
+    <script>
+      const ctx = document.getElementById("myChart");
+
+      let data = {
+        labels: ["Red", "Blue", "Yellow", "Green", "Purple"],
+        datasets: [
+          {
+            label: "RED",
+            data: [12, 0, 0, 0, 0, 0],
+            borderWidth: 1,
+            backgroundColor: "red",
+            borderColor: "black",
+          },
+          {
+            label: "BLUE",
+            data: [0, 19, 0, 0, 0, 0],
+            borderWidth: 1,
+            backgroundColor: "blue",
+            borderColor: "black",
+          },
+          {
+            label: "YELLOW",
+            data: [0, 0, 3, 0, 0, 0],
+            borderWidth: 1,
+            backgroundColor: "yellow",
+            borderColor: "black",
+          },
+          {
+            label: "GREEN",
+            data: [0, 0, 0, 5, 0, 0],
+            borderWidth: 1,
+            backgroundColor: "green",
+            borderColor: "black",
+          },
+          {
+            label: "PURPLE",
+            data: [0, 0, 0, 0, 2, 0],
+            borderWidth: 1,
+            backgroundColor: "purple",
+            borderColor: "black",
+          },
+        ],
+      };
+      let options = {
+        scales: {
+          //   y: {
+          //     beginAtZero: true,
+          //     max: 100,
+          //     min: 0,
+          //     tick: { stepside: 10 },
+          //   },
+          x: {
+            stacked: true, //옆에 자료 없으면 그래프 너비가 늘어남
+            barPercentage: 1.0, // ?
+            categoryPercentage: 1.0, // ?
+          },
+        },
+        animations: {
+          // 아래 tension 설정은 라인 차트에만 적용
+          //   tension: {
+          //     duration: 900,
+          //     easing: "linear",
+          //     from: 1,
+          //     to: 0,
+          //     loop: false,
+          //   },
+          y: { duration: 1000, easing: "ease-in", loop: false },
+        },
+        onClick: (event, chartEl) => {
+          console.log(event, chartEl);
+        },
+      };
+
+      new Chart(ctx, {
+        type: "bar", //bar, line
+        data: data,
+        options: options,
+      });
+    </script>
+  </body>
+</html>

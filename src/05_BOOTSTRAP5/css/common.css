@@ -1,0 +1,58 @@
+:root {
+    font-size: 16px;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+.wrapper {}
+
+/*  */
+.wrapper>header {}
+
+.wrapper>header>.top-header {}
+
+.wrapper>header>nav {}
+
+/*  */
+.wrapper>main {}
+
+.wrapper>main>.banner .carousel-control-prev-icon,
+.wrapper>main>.banner .carousel-control-next-icon {
+    background-color: black;
+    border-radius: 50%;
+    padding: 5px;
+}
+
+.wrapper>main>section {}
+
+.wrapper>main>section.cards {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    gap: 15px;
+    padding: 15px 5px;
+}
+
+.wrapper>main>section.cards>.card {
+    width: 100% !important;
+    height: 100%;
+    border: 1px solid;
+
+}
+
+
+/*  */
+.wrapper>footer {}

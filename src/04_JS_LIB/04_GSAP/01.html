@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+ <!-- 참고 : https://lpla.tistory.com/106 -->
+
+    <style>
+        .box{ margin: 20px; width: 100px; height: 100px; }
+        .box1{ background: orange; }
+        .box2{ background: greenyellow; }
+        .box3{ background: tomato; }
+    </style>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
+
+
+</head>
+<body>
+
+    <div class="box box1"></div>
+    <div class="box box2"></div>
+    <div class="box box3">box</div>
+
+   
+    <script>
+        // GSAP 라이브러리를 사용하여 애니메이션을 만듭니다.
+        gsap.to(".box1", { duration: 3, x: 200, y:200,opacity: 0.2, ease: 'steps(10)', delay: 2,});
+        gsap.to(".box2", { duration: 3, x: 200, rotate: 720, scale: 1.3,});
+        gsap.to(".box3", { duration: 3, x: 200, ease: 'elastic', backgroundColor: 'red', width: 300, fontSize: 60});
+        
+    </script>
+</body>
+</html>
