@@ -66,12 +66,19 @@
         const btnEl = document.querySelector(".btn");
         const containerEl = document.querySelector(".container");
 
-        // btnEl에 이벤트 처리
-        btnEl.addEventListener("click", () => {
-          console.log("입력 clicked");
+        // 입력 처리 함수
+        const processInput = () => {
+          console.log("입력 처리");
           const text = inputEl.value;
           createNode(text);
           inputEl.value = "";
+        };
+
+        btnEl.addEventListener("click", processInput); //processInput()을 넣으면 로직이 아닌 결과값을 받게 되므로 쓰면 안된다.
+        inputEl.addEventListener("keydown", (e) => {
+          if (e.key == "Enter") {
+            processInput(e); //processInput은 인자를 받지 않으므로 e가 없어도 된다.
+          }
         });
 
         // 함수 선언

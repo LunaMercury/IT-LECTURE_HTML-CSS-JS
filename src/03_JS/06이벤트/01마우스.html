@@ -1,5 +1,6 @@
 <!-- 네모박스 클릭했을 때 마우스 클릭 횟수  -->
 <!-- 마우스 진입, 탈출, 클릭 더블클릭 등 체크 -->
+<!-- 이미지 드랍 시 드랍한 이미지 보여주기 -->
 
 <!-- 파일 드롭 시 액션 -->
 <!DOCTYPE html>
@@ -169,12 +170,13 @@
         console.log("dragenter", e);
         e.preventDefault();
       });
+      // 호버링 할 때
       d4E1.addEventListener("dragover", (e) => {
         d4E1.style.border = "5px dashed lightgray";
         d4E1.style.color = "lightgray";
         e.preventDefault();
-        // console.log("dragover", e.target);
       });
+      // 호버링 했다 말았을 때
       d4E1.addEventListener("dragleave", (e) => {
         e.preventDefault();
         d4E1.style.border = "5px dashed gray";
@@ -190,19 +192,19 @@
         d4E1.style.color = "gray";
         console.log("drop.e", e);
         console.log("drop.target", e.target); // 드랍이 들어가는 곳
-        console.log("drop.dataTransfer", e.dataTransfer);
-        console.log("drop.dataTransfer.files", e.dataTransfer.files);
+        console.log("drop.dataTransfer", e.dataTransfer); // 드래그한 데이터, 아무 의미없이 드래그 할 때는 내용이 없지만 파일을 드래그 할 때는 파일 정보가 들어있다.
+        console.log("drop.dataTransfer.files", e.dataTransfer.files); // 드래그한 파일 정보, 드래그한 파일이 여러 개일 수 있으므로 배열로 들어있다.
         const files = e.dataTransfer.files;
+        // for을 쓰는 이유는 동시에 많은 파일을 업로드 했을 때를 대비해
         for (let i = 0; i < files.length; i++) {
           console.log(`drop.dataTransfer.files ${i}`, e.dataTransfer.files[i]); // 파일 정보. [0]은 여러 개의 파일을 동시에 업로드 시 첫 번째만 로그에 보이게 하려고
           const file = e.dataTransfer.files[i];
-
           //왜 !를 쓰는지 모르겠음
           if (!isValid(file)) {
             return;
           }
-          // 미리보기로 이미지 보여주기
 
+          // 미리보기로 이미지 보여주기
           const previewE1 = document.querySelector(".preview");
           const newImgE1 = document.createElement("img");
           newImgE1.src = URL.createObjectURL(file); //파일 정보 입력

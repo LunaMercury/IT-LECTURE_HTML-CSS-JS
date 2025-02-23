@@ -1,3 +1,4 @@
+<!-- form에 입력하고 엔터치면 아래에 나옴 -->
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -19,6 +20,7 @@
         console.log("down.e.keycode", e.keyCode);
         // p2E1.innerHTML = e.key + " " + e.keyCode;
 
+        //엔터키는 13
         if (e.keyCode == 13) {
           const text = keydownE1.value;
           const newE1 = document.createElement("div");

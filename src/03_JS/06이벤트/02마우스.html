@@ -133,7 +133,7 @@
 
       // 아이템 드래그 & 드랍
       const liE1s = document.querySelectorAll(".items li"); //아이템 안의 모든 li를 꺼내는 작업
-      let dragedNode = null;
+      let dragedNode = null; // 초기값 설정
       // selectAll 썼으므로 foreach 사용해야한다
       liE1s.forEach((element) => {
         element.addEventListener("dragstart", (e) => {
